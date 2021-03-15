@@ -22,19 +22,19 @@ public class Tarifa {
     private Long id;
     private Long avaluoMinimo;
     private Long avaluoMaximo;
-    private double tarifa;
+    private double valor;
     private int anio;
 
-    public Tarifa(Long id, Long avaluoMinimo, Long avaluoMaximo, double tarifa, int anio) {
+    public Tarifa(Long id, Long avaluoMinimo, Long avaluoMaximo, double valor, int anio) {
 
         ValidadorArgumento.validarObligatorio(avaluoMinimo, SE_DEBE_INGRESAR_AVALUO_MINIMO);
         ValidadorArgumento.validarObligatorio(avaluoMaximo, SE_DEBE_INGRESAR_AVALUO_MAXIMO);
-        ValidadorArgumento.validarObligatorio(tarifa, SE_DEBE_INGRESAR_UNA_TARIFA);
+        ValidadorArgumento.validarObligatorio(valor, SE_DEBE_INGRESAR_UNA_TARIFA);
         ValidadorArgumento.validarObligatorio(anio, SE_DEBE_INGRESAR_UN_ANIO);
 
         ValidadorArgumento.validarLongitudMinima(anio, LONGITUD_MINIMA_ANIO, String.format(EL_ANIO_DEBE_TENER_UNA_LONGITUD_MAYOR_O_IGUAL_A, LONGITUD_MINIMA_ANIO));
 
-        ValidadorArgumento.validarPositivo(tarifa, SE_DEBE_INGRESAR_UNA_TARIFA);
+        ValidadorArgumento.validarPositivo(valor, SE_DEBE_INGRESAR_UNA_TARIFA);
 
         ValidadorArgumento.validarMayorIgualACero(avaluoMinimo, String.format(EL_AVALUO_MINIMO_DEBE_SER_MAYOR_O_IGUAL_A, VALOR_MINIMO_PARA_AVALUO_MINIMO));
 
@@ -45,7 +45,7 @@ public class Tarifa {
         this.id = id;
         this.avaluoMinimo = avaluoMinimo;
         this.avaluoMaximo = avaluoMaximo;
-        this.tarifa = tarifa;
+        this.valor = valor;
         this.anio = anio;
     }
 }

@@ -19,7 +19,6 @@ public class ServicioCrearPago {
 
     public ServicioCrearPago(RepositorioPago repositorioPago) {
         this.repositorioPago = repositorioPago;
-        System.out.println("ANIO_ACTUAL = " + ANIO_ACTUAL);
     }
 
     public Long ejecutar(Pago pago) {
