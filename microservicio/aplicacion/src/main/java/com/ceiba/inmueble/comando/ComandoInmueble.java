@@ -1,6 +1,5 @@
 package com.ceiba.inmueble.comando;
 
-import com.ceiba.propietario.modelo.dto.DtoPropietario;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
