@@ -17,6 +17,8 @@ pipeline {
   }
 
   //Aquí comienzan los “items” del Pipeline
+  //Stages => Escenarios
+  //Stage => Escenario
   stages{
     stage('Checkout') {
       steps{
@@ -61,6 +63,7 @@ pipeline {
     }
   }
 
+// lo que se ejecuta luego
   post {
       always {
         echo 'This will always run'
