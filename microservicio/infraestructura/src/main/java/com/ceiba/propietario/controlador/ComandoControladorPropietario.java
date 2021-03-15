@@ -5,7 +5,6 @@ import com.ceiba.propietario.comando.ComandoPropietario;
 import com.ceiba.propietario.comando.manejador.ManejadorActualizarPropietario;
 import com.ceiba.propietario.comando.manejador.ManejadorCrearPropietario;
 import com.ceiba.propietario.comando.manejador.ManejadorEliminarPropietario;
-import com.ceiba.usuario.comando.ComandoUsuario;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;

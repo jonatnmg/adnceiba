@@ -12,7 +12,7 @@ import java.util.List;
 public class DaoPropietarioMysql implements DaoPropietario {
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
 
-    @SqlStatement(namespace="propietario", value="listar")
+    @SqlStatement(namespace = "propietario", value = "listar")
     private static String sqlListar;
 
     public DaoPropietarioMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
