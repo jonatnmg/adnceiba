@@ -1,4 +1,4 @@
-package com.ceiba.usuario.controlador;
+package com.ceiba.tarifa.controlador;
 
 import com.ceiba.ApplicationMock;
 import org.junit.Test;
@@ -18,23 +18,19 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = ApplicationMock.class)
-@WebMvcTest(ConsultaControladorUsuario.class)
-public class ConsultaControladorUsuarioTest {
+@WebMvcTest(ConsultaControladorTarifa.class)
+public class ConsultaControladorTarifaTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @Test
     public void listar() throws Exception {
-        // arrange
 
-        // act - assert
-        mockMvc.perform(get("/usuarios")
+        mockMvc.perform(get("/tarifas")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)))
-                .andExpect(jsonPath("$[0].nombre", is("test")));
+                .andExpect(jsonPath("$[0].tarifa", is(5.7)));
     }
-
-
 }

@@ -15,3 +15,13 @@ CREATE TABLE propietario (
   direccion varchar(45) DEFAULT NULL,
   PRIMARY KEY (id)
 );
+
+CREATE TABLE tarifa (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  avaluo_minimo bigint(11) DEFAULT NULL,
+  avaluo_maximo bigint(11) DEFAULT NULL,
+  tarifa decimal(10,3) DEFAULT NULL,
+  anio int(11) DEFAULT NULL,
+  PRIMARY KEY (id)
+);
+
