@@ -18,5 +18,5 @@ public class ComandoInmueble {
     private int areaTotal;
     private int areaConstruida;
     private long avaluoCatastral;
-    private int propietario;
+    private long propietario;
 }

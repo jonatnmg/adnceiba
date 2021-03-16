@@ -34,9 +34,9 @@ public class Inmueble {
     private int areaTotal;
     private int areaConstruida;
     private long avaluoCatastral;
-    private int idPropietario;
+    private Long idPropietario;
 
-    public Inmueble(Long id, Long numeroPredial, int codigoPostal, String direccion, int areaTotal, int areaConstruida, long avaluoCatastral, int idPropietario) {
+    public Inmueble(Long id, Long numeroPredial, int codigoPostal, String direccion, int areaTotal, int areaConstruida, long avaluoCatastral, Long idPropietario) {
 
         ValidadorArgumento.validarObligatorio(numeroPredial, SE_DEBE_INGRESAR_NUMERO_PREDIAL);
         ValidadorArgumento.validarObligatorio(codigoPostal, SE_DEBE_INGRESAR_CODIGO_POSTAL);
