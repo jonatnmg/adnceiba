@@ -25,3 +25,17 @@ CREATE TABLE tarifa (
   PRIMARY KEY (id)
 );
 
+CREATE TABLE inmueble (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  numero_predial bigint(11) DEFAULT NULL,
+  codigo_postal int(11) DEFAULT NULL,
+  direccion varchar(50) DEFAULT NULL,
+  area_total int(11) DEFAULT NULL,
+  area_construida int(11) DEFAULT NULL,
+  avaluo_catastral bigint(11) DEFAULT NULL,
+  id_propietario int(11) DEFAULT NULL,
+  PRIMARY KEY (id),
+  KEY FK_I_PROPIETARIO_idx (id_propietario),
+  CONSTRAINT FK_I_PROPIETARIO FOREIGN KEY (id_propietario) REFERENCES propietario (id) ON UPDATE NO ACTION
+);
+
