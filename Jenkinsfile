@@ -42,7 +42,7 @@ pipeline {
     stage('Compile & Unit Tests') {
       steps{
         echo "------------>Unit Tests<------------"
-        sh 'gradle --b ./microservicio/build.gradle test jacocoTestReport'
+        sh 'gradle --b ./microservicio/build.gradle test'
       }
     }
 
