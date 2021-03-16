@@ -13,6 +13,7 @@ public class ServicioCrearUsuarioTest {
 
     @Test
     public void validarClaveLongitudMenor4Test() {
+
         // arrange
         UsuarioTestDataBuilder usuarioTestDataBuilder = new UsuarioTestDataBuilder().conClave("124");
         // act - assert
