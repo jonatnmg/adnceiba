@@ -4,11 +4,11 @@ import com.ceiba.propietario.modelo.entidad.Propietario;
 
 public class PropietarioTestDataBuilder {
 
-    private static final String NOMBRE_PROPIETARIO = "Propietario X";
-    private static final String NUMERO_IDENTIFICACION = "Propietario X";
-    private static final String TELEFONO = "62130488";
-    private static final String CORREO = "email@default.com";
-    private static final String DIRECCION = "Calle 19a No. 18 - 69 Br. Coliflor";
+    public static final String NOMBRE_PROPIETARIO = "Propietario X";
+    public static final String NUMERO_IDENTIFICACION = "123456678";
+    public static final String TELEFONO = "62130488";
+    public static final String CORREO = "email@default.com";
+    public static final String DIRECCION = "Calle 19a No. 18 - 69 Br. Coliflor";
 
     private Long id;
     private String nombre;
