@@ -39,6 +39,7 @@ public class Tarifa {
         ValidadorArgumento.validarMayorIgualACero(avaluoMinimo, String.format(EL_AVALUO_MINIMO_DEBE_SER_MAYOR_O_IGUAL_A, VALOR_MINIMO_PARA_AVALUO_MINIMO));
 
         ValidadorArgumento.validarPositivo(avaluoMaximo, String.format(EL_AVALUO_MAXIMO_DEBE_SER_MAYOR_O_IGUAL_A, VALOR_MINIMO_PARA_AVALUO_MAXIMO));
+        ValidadorArgumento.validarPositivo(anio, SE_DEBE_INGRESAR_UN_ANIO);
 
         ValidadorArgumento.validarMenor(avaluoMinimo, avaluoMaximo, EL_RANGO_DE_AVALUO_INCORRECTO);
 
