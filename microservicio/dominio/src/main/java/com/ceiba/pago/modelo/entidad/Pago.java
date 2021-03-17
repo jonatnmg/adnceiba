@@ -3,6 +3,7 @@ package com.ceiba.pago.modelo.entidad;
 import com.ceiba.dominio.ValidadorArgumento;
 import lombok.Getter;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Getter
@@ -18,7 +19,7 @@ public class Pago {
     private static final String EL_ANIO_DEBE_TENER_UNA_LONGITUD_MAYOR_O_IGUAL_A = "El anio debe tener una longitud mayor o igual a %s";
 
     private static final int LONGITUD_MINIMA_ANIO = 4;
-    private static final String FORMATO_FECHA_CORRECTO = "dd/mm/yyyy";
+    private static final String FORMATO_FECHA_CORRECTO = "d/MM/yyyy";
     private static final String EXPRESION_REGULAR_FECHA = "^([0-2][0-9]|3[0-1])(\\/)(0[1-9]|1[0-2])\\2(\\d{4})$";
 
     private Long id;
@@ -26,7 +27,7 @@ public class Pago {
     private Long idInmueble;
     private int anio;
     private Long valorPagado;
-    private Date fechaPago;
+    private LocalDate fechaPago;
 
     public Pago(Long id, Long propietario, Long inmueble, int anio, Long valorPagado, String fechaPago) {
 

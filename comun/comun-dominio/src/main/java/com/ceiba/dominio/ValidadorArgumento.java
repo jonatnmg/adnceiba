@@ -1,19 +1,18 @@
 package com.ceiba.dominio;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import com.ceiba.dominio.excepcion.ExcepcionFechaIncorrecta;
+import com.ceiba.dominio.excepcion.ExcepcionLongitudValor;
+import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
+import com.ceiba.dominio.excepcion.ExcepcionValorObligatorio;
+
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import com.ceiba.dominio.excepcion.ExcepcionLongitudValor;
-import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
-import com.ceiba.dominio.excepcion.ExcepcionValorObligatorio;
-import com.ceiba.dominio.excepcion.ExcepcionFechaIncorrecta;
 
 public class ValidadorArgumento {
 
@@ -118,16 +117,12 @@ public class ValidadorArgumento {
         }
     }
 
-    public static Date verificarFecha(String fecha, String mensaje, String formatoFecha) {
-
+    public static LocalDate verificarFecha(String fecha, String mensaje, String formatoFecha) {
         try {
-            SimpleDateFormat sdf = new SimpleDateFormat();
-            sdf.applyPattern(formatoFecha);
-            sdf.setLenient(true);
-            Date fechaFormateada = sdf.parse(fecha);
-
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern(formatoFecha);
+            LocalDate fechaFormateada = LocalDate.parse(fecha, formatter);
             return fechaFormateada;
-        } catch (ParseException | IllegalArgumentException excepcion) {
+        } catch (IllegalArgumentException excepcion) {
             throw new ExcepcionFechaIncorrecta(mensaje);
         }
     }
