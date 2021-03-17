@@ -38,5 +38,20 @@ CREATE TABLE inmueble (
   foreign key (id_propietario) REFERENCES propietario(id)
 );
 
+CREATE TABLE pago (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  id_propietario int(11) DEFAULT NULL,
+  id_inmueble int(11) DEFAULT NULL,
+  fecha_pago date DEFAULT NULL,
+  anio int(11) DEFAULT NULL,
+  valor_pagado bigint(11) DEFAULT NULL,
+  PRIMARY KEY (id),
+  KEY FK_P_PROPIETARIO_idx (id_propietario),
+  KEY FK_P_INMUEBLE_idx (id_inmueble),
+  CONSTRAINT FK_P_INMUEBLE FOREIGN KEY (id_inmueble) REFERENCES inmueble (id) ON UPDATE NO ACTION,
+  CONSTRAINT FK_P_PROPIETARIO FOREIGN KEY (id_propietario) REFERENCES propietario (id) ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
+
+
 
 

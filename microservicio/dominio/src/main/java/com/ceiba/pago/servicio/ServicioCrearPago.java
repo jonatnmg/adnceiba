@@ -18,6 +18,8 @@ public class ServicioCrearPago {
     private final DaoInmueble daoInmueble;
     private final DaoTarifa daoTarifa;
 
+    private static final String EL_PAGO_YA_EXISTE_EN_EL_SISTEMA = "El pago ya existe en el sistema";
+
     public ServicioCrearPago(RepositorioPago repositorioPago, RepositorioInmueble repositorioInmueble, RepositorioTarifa repositorioTarifa, DaoInmueble daoInmueble, DaoTarifa daoTarifa) {
         this.repositorioPago = repositorioPago;
         this.repositorioInmueble = repositorioInmueble;
@@ -26,9 +28,6 @@ public class ServicioCrearPago {
         this.daoTarifa = daoTarifa;
         this.gestionarImpuestoPredial = new GestionarImpuestoPredial(repositorioInmueble, repositorioTarifa, daoInmueble, daoTarifa);
     }
-
-    private static final String EL_PAGO_YA_EXISTE_EN_EL_SISTEMA = "El pago ya existe en el sistema";
-
 
     public Long ejecutar(Pago pago) {
 
