@@ -1,5 +1,6 @@
 package com.ceiba.configuracion;
 
+import com.ceiba.inmueble.puerto.dao.DaoInmueble;
 import com.ceiba.inmueble.puerto.repositorio.RepositorioInmueble;
 import com.ceiba.inmueble.servicio.ServicioActualizarInmueble;
 import com.ceiba.inmueble.servicio.ServicioCrearInmueble;
@@ -10,6 +11,7 @@ import com.ceiba.propietario.puerto.repositorio.RepositorioPropietario;
 import com.ceiba.propietario.servicio.ServicioActualizarPropietario;
 import com.ceiba.propietario.servicio.ServicioCrearPropietario;
 import com.ceiba.propietario.servicio.ServicioEliminarPropietario;
+import com.ceiba.tarifa.puerto.dao.DaoTarifa;
 import com.ceiba.tarifa.puerto.repositorio.RepositorioTarifa;
 import com.ceiba.tarifa.servicio.ServicioActualizarTarifa;
 import com.ceiba.tarifa.servicio.ServicioCrearTarifa;
@@ -85,7 +87,7 @@ public class BeanServicio {
     }
 
     @Bean
-    public ServicioCrearPago servicioCrearPago(RepositorioPago repositorioPago) {
-        return new ServicioCrearPago(repositorioPago);
+    public ServicioCrearPago servicioCrearPago(RepositorioPago repositorioPago, RepositorioInmueble repositorioInmueble, RepositorioTarifa repositorioTarifa, DaoInmueble daoInmueble, DaoTarifa daoTarifa) {
+        return new ServicioCrearPago(repositorioPago, repositorioInmueble, repositorioTarifa, daoInmueble, daoTarifa);
     }
 }

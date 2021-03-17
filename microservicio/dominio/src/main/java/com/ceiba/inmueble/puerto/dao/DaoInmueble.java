@@ -11,4 +11,19 @@ public interface DaoInmueble {
      * @return los inmuebles
      */
     List<DtoInmueble> listar();
+
+    /**
+     * Permite obtener un inmueble por id
+     *
+     * @return listado de inmueble
+     */
+    DtoInmueble buscarPorId(Long id);
+
+    /**
+     * Obtener valor catastral por id inmueble
+     *
+     * @param id
+     * @return
+     */
+    Long obtenerValorCatastral(Long id);
 }
