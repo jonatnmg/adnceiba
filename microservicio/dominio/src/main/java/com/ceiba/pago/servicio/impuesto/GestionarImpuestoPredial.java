@@ -19,7 +19,7 @@ public class GestionarImpuestoPredial {
     private final DaoTarifa daoTarifa;
 
     private static final String NO_SE_PERMITEN_PAGOS_LOS_DIAS_SABADOS_O_DOMINGOS = "No se permiten pagos los dias sabados o domingos";
-    private static final String ERROR_AL_PAGAR_EL_VALOR_A_PAGAR_ES = "Error al pagar, el valor que debe pagar es %s";
+    private static final String ERROR_AL_PAGAR_EL_VALOR_A_PAGAR_ES = "Error al pagar, el valor que debe pagar es %s, estas pagando %s";
     private static final String NO_SE_ENCONTRO_TARIFAS = "No se encontro tarifas";
 
     private static final int DIA_MAXIMO_DESCUENTO = 30;
@@ -52,15 +52,15 @@ public class GestionarImpuestoPredial {
         double tarifa = this.obtenerTarifa(avaluoCatastral, pago.getAnio());
 
         Long valorPagado = pago.getValorPagado();
-        double valorImpuesto = this.calcularImpuesto(avaluoCatastral, tarifa);
-        double valorApagar = this.verificarAplicaDescuentoMulta(pago, valorImpuesto);
+        int valorImpuesto = this.calcularImpuesto(avaluoCatastral, tarifa);
+        int valorApagar = (int) this.verificarAplicaDescuentoMulta(pago, valorImpuesto);
 
         if (valorPagado != valorApagar) {
-            throw new ExcepcionCrearPago(String.format(ERROR_AL_PAGAR_EL_VALOR_A_PAGAR_ES, valorApagar));
+            throw new ExcepcionCrearPago(String.format(ERROR_AL_PAGAR_EL_VALOR_A_PAGAR_ES, valorApagar, valorPagado));
         }
     }
 
-    private double verificarAplicaDescuentoMulta(Pago pago, double valorImpuesto) {
+    private double verificarAplicaDescuentoMulta(Pago pago, int valorImpuesto) {
         LocalDate fechaPago = pago.getFechaPago();
         int anio_a_pagar = pago.getAnio();
         double valorApagar = valorImpuesto;
@@ -87,7 +87,7 @@ public class GestionarImpuestoPredial {
         return !fechaPago.isAfter(fechaMaximaDescuento);
     }
 
-    private double calcularImpuesto(Long avaluoCatastral, double tarifa) {
+    private int calcularImpuesto(Long avaluoCatastral, double tarifa) {
 
         ImpuestoPredial impuestoPredial = new ValorImpuestoPredial(avaluoCatastral, tarifa, TARIFA_POR_MIL);
         return impuestoPredial.calcular();

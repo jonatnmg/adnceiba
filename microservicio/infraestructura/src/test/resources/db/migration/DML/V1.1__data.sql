@@ -9,5 +9,3 @@ values (137325001, 158092000, 5.7, 2021);
 insert into inmueble (numero_predial, codigo_postal, direccion, area_total, area_construida, avaluo_catastral, id_propietario)
 values (14563687, 638974, 'Calle 50 No. 19-5 Br. Los Andres', 132, 125, 137325001, 1);
 
-insert into pago (id_propietario, id_inmueble, fecha_pago, anio, valor_pagado)
-values (1, 1, '2021-03-15', 2021, 150000)

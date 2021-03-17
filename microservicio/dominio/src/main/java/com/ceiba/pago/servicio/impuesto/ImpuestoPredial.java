@@ -2,6 +2,6 @@ package com.ceiba.pago.servicio.impuesto;
 
 public interface ImpuestoPredial {
 
-    public double calcular();
+    public int calcular();
 
 }
