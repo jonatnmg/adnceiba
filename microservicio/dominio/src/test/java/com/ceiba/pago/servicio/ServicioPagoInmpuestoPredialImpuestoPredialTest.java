@@ -6,7 +6,7 @@ import com.ceiba.dominio.excepcion.ExcepcionValorObligatorio;
 import com.ceiba.pago.servicio.testdatabuilder.PagoTestDataBuilder;
 import org.junit.Test;
 
-public class ServicioCrearPagoTest {
+public class ServicioPagoInmpuestoPredialImpuestoPredialTest {
 
     private static final String SE_DEBE_INGRESAR_UN_PROPIETARIO = "Se debe ingresar un identificador de propietario";
     private static final String SE_DEBE_INGRESAR_UN_INMUEBLE = "Se debe ingresar un identificador de inmueble";
@@ -17,7 +17,6 @@ public class ServicioCrearPagoTest {
 
     private static final int ANIO_INCORRECTO = 0;
     private static final String FORMATO_FECHA_CORRECTO = "d/MM/yyyy";
-    private static final String FECHA_INCORRECTA = "2021-21";
 
     @Test
     public void validarPropietarioNuloTest() {
@@ -55,17 +54,6 @@ public class ServicioCrearPagoTest {
                 ExcepcionValorObligatorio.class, SE_DEBE_INGRESAR_UN_VALOR_PAGADO);
     }
 
-    @Test
-    public void validarFechaPagoNuloTest() {
-        // arrange
-        PagoTestDataBuilder pagoTestDataBuilder = new PagoTestDataBuilder()
-                .conFechaPago(null);
-
-        // act - assert
-        BasePrueba.assertThrows(
-                () -> pagoTestDataBuilder.build(),
-                ExcepcionValorObligatorio.class, SE_DEBE_INGRESAR_UNA_FECHA);
-    }
 
     @Test
     public void validarAnioPositivoTest() {
@@ -77,17 +65,5 @@ public class ServicioCrearPagoTest {
         BasePrueba.assertThrows(
                 () -> pagoTestDataBuilder.build(),
                 ExcepcionValorInvalido.class, SE_DEBE_INGRESAR_UN_ANIO);
-    }
-
-    @Test
-    public void validarFormatoFechaTest() {
-        // arrange
-        PagoTestDataBuilder pagoTestDataBuilder = new PagoTestDataBuilder()
-                .conFechaPago(FECHA_INCORRECTA);
-
-        // act - assert
-        BasePrueba.assertThrows(
-                () -> pagoTestDataBuilder.build(),
-                ExcepcionValorInvalido.class, String.format(SE_DEBE_INGRESAR_UNA_FECHA_CON_EL_FORMATO, FORMATO_FECHA_CORRECTO));
     }
 }

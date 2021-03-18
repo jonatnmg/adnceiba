@@ -19,7 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = ApplicationMock.class)
 @WebMvcTest(ComandoControladorPago.class)
-public class ComandoControladorPagoTest {
+public class ComandoControladorPagoImpuestoPredialTest {
 
     @Autowired
     private ObjectMapper objectMapper;

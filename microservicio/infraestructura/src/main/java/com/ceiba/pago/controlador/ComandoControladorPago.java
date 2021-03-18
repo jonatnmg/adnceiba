@@ -24,7 +24,7 @@ public class ComandoControladorPago {
     }
 
     @PostMapping
-    @ApiOperation("Crear Pago")
+    @ApiOperation("Crear PagoImpuestoPredial")
     public ComandoRespuesta<Long> crear(@RequestBody ComandoPago comandoPago) {
         return this.manejadorCrearPago.ejecutar(comandoPago);
     }

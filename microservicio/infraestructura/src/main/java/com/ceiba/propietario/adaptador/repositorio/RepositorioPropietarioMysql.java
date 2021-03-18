@@ -76,4 +76,10 @@ public class RepositorioPropietarioMysql implements RepositorioPropietario {
 
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorNumeroIdentificacion, paramSource, Boolean.class);
     }
+
+    @Override
+    public Propietario buscarPropietarioPorId(Long idPropietario) {
+        // TODO buscarpoId
+        return null;
+    }
 }

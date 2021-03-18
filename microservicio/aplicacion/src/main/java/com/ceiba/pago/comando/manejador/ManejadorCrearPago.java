@@ -3,25 +3,25 @@ package com.ceiba.pago.comando.manejador;
 import com.ceiba.ComandoRespuesta;
 import com.ceiba.manejador.ManejadorComandoRespuesta;
 import com.ceiba.pago.comando.ComandoPago;
-import com.ceiba.pago.comando.fabrica.FabricaPago;
-import com.ceiba.pago.modelo.entidad.Pago;
-import com.ceiba.pago.servicio.ServicioCrearPago;
+import com.ceiba.pago.comando.fabrica.FabricaPagoImpuestoPredial;
+import com.ceiba.pago.modelo.entidad.PagoImpuestoPredial;
+import com.ceiba.pago.servicio.ServicioPagoInmpuestoPredial;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ManejadorCrearPago implements ManejadorComandoRespuesta<ComandoPago, ComandoRespuesta<Long>> {
 
-    private final FabricaPago fabricaPago;
-    private final ServicioCrearPago servicioCrearPago;
+    private final FabricaPagoImpuestoPredial fabricaPagoImpuestoPredial;
+    private final ServicioPagoInmpuestoPredial servicioPagoInmpuestoPredial;
 
-    public ManejadorCrearPago(FabricaPago fabricaPago, ServicioCrearPago servicioCrearPago) {
-        this.fabricaPago = fabricaPago;
-        this.servicioCrearPago = servicioCrearPago;
+    public ManejadorCrearPago(FabricaPagoImpuestoPredial fabricaPagoImpuestoPredial, ServicioPagoInmpuestoPredial servicioPagoInmpuestoPredial) {
+        this.fabricaPagoImpuestoPredial = fabricaPagoImpuestoPredial;
+        this.servicioPagoInmpuestoPredial = servicioPagoInmpuestoPredial;
     }
 
     @Override
     public ComandoRespuesta<Long> ejecutar(ComandoPago comandoPago) {
-        Pago pago = this.fabricaPago.crear(comandoPago);
-        return new ComandoRespuesta<>(this.servicioCrearPago.ejecutar(pago));
+        PagoImpuestoPredial pagoImpuestoPredial = this.fabricaPagoImpuestoPredial.crear(comandoPago);
+        return new ComandoRespuesta<>(this.servicioPagoInmpuestoPredial.ejecutar(pagoImpuestoPredial));
     }
 }

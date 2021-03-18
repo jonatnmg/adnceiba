@@ -1,7 +1,7 @@
-package com.ceiba.pago.servicio.impuesto;
+package com.ceiba.pago.servicio.impuestopredial;
 
 
-public class ValorImpuestoPredial implements ImpuestoPredial {
+public class ValorImpuestoPredial {
 
     private final Long avaluoCatastral;
     private final Double tarifa;
@@ -13,7 +13,6 @@ public class ValorImpuestoPredial implements ImpuestoPredial {
         this.tarifaPorMil = tarifaPorMil;
     }
 
-    @Override
     public int calcular() {
         double valor = Math.ceil((this.avaluoCatastral * this.tarifa) / this.tarifaPorMil);
         return (int) valor;

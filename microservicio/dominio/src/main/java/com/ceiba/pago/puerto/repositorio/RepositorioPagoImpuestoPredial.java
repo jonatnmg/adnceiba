@@ -1,22 +1,22 @@
 package com.ceiba.pago.puerto.repositorio;
 
-import com.ceiba.pago.modelo.entidad.Pago;
+import com.ceiba.pago.modelo.entidad.PagoImpuestoPredial;
 
-public interface RepositorioPago {
+public interface RepositorioPagoImpuestoPredial {
     /**
-     * Permite crear un pago
+     * Permite crear un pagoImpuestoPredial
      *
-     * @param pago
+     * @param pagoImpuestoPredial
      * @return el id generado
      */
-    Long crear(Pago pago);
+    Long crear(PagoImpuestoPredial pagoImpuestoPredial);
 
     /**
-     * Permite actualizar un pago
+     * Permite actualizar un pagoImpuestoPredial
      *
-     * @param pago
+     * @param pagoImpuestoPredial
      */
-    void actualizar(Pago pago);
+    void actualizar(PagoImpuestoPredial pagoImpuestoPredial);
 
     /**
      * Permite eliminar un pago

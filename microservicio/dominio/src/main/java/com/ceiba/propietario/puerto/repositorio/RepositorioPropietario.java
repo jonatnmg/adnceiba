@@ -50,4 +50,12 @@ public interface RepositorioPropietario {
      */
     boolean existePorNumeroIdentificacion(String numeroIdentificacion);
 
+    /**
+     * Buscar propietario por idPropietario
+     *
+     * @param idPropietario
+     * @return
+     */
+    Propietario buscarPropietarioPorId(Long idPropietario);
+
 }
