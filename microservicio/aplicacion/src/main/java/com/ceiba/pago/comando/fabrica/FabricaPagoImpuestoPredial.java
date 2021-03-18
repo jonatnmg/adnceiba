@@ -16,6 +16,7 @@ public class FabricaPagoImpuestoPredial {
     public PagoImpuestoPredial crear(ComandoPago comandoPago) {
 
         Propietario propietario = repositorioPropietario.buscarPropietarioPorId(comandoPago.getIdPropietario());
+        System.out.println("Numero identificacion => " + propietario.getNumeroIdentificacion());
         Inmueble inmueble = null;
         Tarifa tarifa = null;
 
