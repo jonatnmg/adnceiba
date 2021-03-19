@@ -30,6 +30,6 @@ public class MapeoInmueble implements RowMapper<DtoInmueble>, MapperResult {
 
         DtoPropietario propietario = new DtoPropietario(idPropietario, nombre, numeroIdentificacion, telefono, correo, direccionPropietario);
 
-        return new DtoInmueble(id, numeroPredial, codigoPostal, direccion, areaTotal, areaConstruida, avaluoCatrastral, propietario);
+        return new DtoInmueble(id, numeroPredial, direccion, areaTotal, areaConstruida, avaluoCatrastral, propietario);
     }
 }

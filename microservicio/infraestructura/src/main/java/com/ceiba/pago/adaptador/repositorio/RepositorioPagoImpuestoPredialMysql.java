@@ -38,6 +38,7 @@ public class RepositorioPagoImpuestoPredialMysql implements RepositorioPagoImpue
                 .addValue("idInmueble", pagoImpuestoPredial.getInmueble().getId())
                 .addValue("fechaPago", pagoImpuestoPredial.getFechaPago())
                 .addValue("anio", pagoImpuestoPredial.getAnio())
+                .addValue("idTarifa", pagoImpuestoPredial.getTarifa().getId())
                 .addValue("valorPagado", pagoImpuestoPredial.getValorPagado());
 
         return paramSource;
