@@ -10,7 +10,6 @@ public class DtoInmueble {
 
     private Long id;
     private Long numeroPredial;
-    private int codigoPostal;
     private String direccion;
     private int areaTotal;
     private int areaConstruida;
