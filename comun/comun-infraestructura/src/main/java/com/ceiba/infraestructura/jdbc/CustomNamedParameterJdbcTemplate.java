@@ -40,6 +40,10 @@ public class CustomNamedParameterJdbcTemplate {
         this.namedParameterJdbcTemplate.update(sql, paramSource);
     }
 
+    public void actualizar(SqlParameterSource paramSource, String sql) {
+        this.namedParameterJdbcTemplate.update(sql, paramSource);
+    }
+
     private MapSqlParameterSource crearParametros(Object object) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         Field[] fields = object.getClass().getDeclaredFields();

@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class FabricaInmueble {
 
-
     public Inmueble crear(ComandoInmueble comandoInmueble, RepositorioPropietario repositorioPropietario) {
 
         Propietario propietario = repositorioPropietario.buscarPropietarioPorId(comandoInmueble.getIdPropietario());

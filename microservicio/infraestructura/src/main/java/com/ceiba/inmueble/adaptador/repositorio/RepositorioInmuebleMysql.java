@@ -38,12 +38,13 @@ public class RepositorioInmuebleMysql implements RepositorioInmueble {
 
     private SqlParameterSource obtenerParametrosInmueble(Inmueble inmueble) {
         SqlParameterSource paramSource = new MapSqlParameterSource()
+                .addValue("id", inmueble.getId())
                 .addValue("numeroPredial", inmueble.getNumeroPredial())
                 .addValue("direccion", inmueble.getDireccion())
                 .addValue("areaTotal", inmueble.getAreaTotal())
                 .addValue("areaConstruida", inmueble.getAreaConstruida())
                 .addValue("avaluoCatastral", inmueble.getAvaluoCatastral())
-                .addValue("idPropietario", inmueble.getPropietario());
+                .addValue("idPropietario", inmueble.getPropietario().getId());
 
         return paramSource;
     }
@@ -56,7 +57,8 @@ public class RepositorioInmuebleMysql implements RepositorioInmueble {
 
     @Override
     public void actualizar(Inmueble inmueble) {
-        this.customNamedParameterJdbcTemplate.actualizar(inmueble, sqlActualizar);
+        SqlParameterSource paramSource = this.obtenerParametrosInmueble(inmueble);
+        this.customNamedParameterJdbcTemplate.actualizar(paramSource, sqlActualizar);
     }
 
     @Override
