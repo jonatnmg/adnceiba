@@ -1,4 +1,4 @@
-package com.ceiba.tarifa.servicio.testdatabuilder;
+package com.ceiba.tarifa.testdatabuilder;
 
 import com.ceiba.tarifa.modelo.entidad.Tarifa;
 

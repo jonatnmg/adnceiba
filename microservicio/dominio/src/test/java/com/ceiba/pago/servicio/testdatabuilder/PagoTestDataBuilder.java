@@ -35,12 +35,12 @@ public class PagoTestDataBuilder {
         this.fechaPago = FECHA_PAGO;
     }
 
-    public PagoTestDataBuilder conIdPropietario(Propietario propietario) {
+    public PagoTestDataBuilder conPropietario(Propietario propietario) {
         this.propietario = propietario;
         return this;
     }
 
-    public PagoTestDataBuilder conIdInmueble(Inmueble idInmueble) {
+    public PagoTestDataBuilder conInmueble(Inmueble idInmueble) {
         this.inmueble = inmueble;
         return this;
     }

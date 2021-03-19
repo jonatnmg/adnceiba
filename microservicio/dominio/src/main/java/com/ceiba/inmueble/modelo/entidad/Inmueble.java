@@ -1,6 +1,7 @@
 package com.ceiba.inmueble.modelo.entidad;
 
 import com.ceiba.dominio.ValidadorArgumento;
+import com.ceiba.propietario.modelo.entidad.Propietario;
 import lombok.Getter;
 
 @Getter
@@ -29,30 +30,26 @@ public class Inmueble {
 
     private Long id;
     private Long numeroPredial;
-    private int codigoPostal;
     private String direccion;
     private int areaTotal;
     private int areaConstruida;
     private long avaluoCatastral;
-    private Long idPropietario;
+    private Propietario propietario;
 
-    public Inmueble(Long id, Long numeroPredial, int codigoPostal, String direccion, int areaTotal, int areaConstruida, long avaluoCatastral, Long idPropietario) {
+    public Inmueble(Long id, Long numeroPredial, String direccion, int areaTotal, int areaConstruida, long avaluoCatastral, Propietario propietario) {
 
         ValidadorArgumento.validarObligatorio(numeroPredial, SE_DEBE_INGRESAR_NUMERO_PREDIAL);
-        ValidadorArgumento.validarObligatorio(codigoPostal, SE_DEBE_INGRESAR_CODIGO_POSTAL);
         ValidadorArgumento.validarObligatorio(direccion, SE_DEBE_INGRESAR_DIRECCION);
         ValidadorArgumento.validarObligatorio(areaTotal, SE_DEBE_INGRESAR_AREA_TOTAL);
         ValidadorArgumento.validarObligatorio(areaConstruida, SE_DEBE_INGRESAR_AREA_CONSTRUIDA);
         ValidadorArgumento.validarObligatorio(avaluoCatastral, SE_DEBE_INGRESAR_AVALUO_CATASTRAL);
-        ValidadorArgumento.validarObligatorio(idPropietario, EL_PROPIETARIO_ES_OBLIGATORIO);
+        ValidadorArgumento.validarObligatorio(propietario, EL_PROPIETARIO_ES_OBLIGATORIO);
 
         ValidadorArgumento.validarLongitud(direccion, LONGITUD_MINIMA_DIRECCION, String.format(LA_LONGITUD_DE_LADIRECCION_DEBE_SER_MAYOR_O_IGUAL_ADIRECCION_DEBE_SER_MAYOR_O_IGUAL_A, LONGITUD_MINIMA_DIRECCION));
         ValidadorArgumento.validarLongitud(numeroPredial.toString(), LONGITUD_MINIMA_NUMERO_PREDIAL, String.format(EL_NUMERO_PREDIAL_DEBE_TENER_UNA_LONGITUD_MAYOR_O_IGUAL_A, LONGITUD_MINIMA_NUMERO_PREDIAL));
 
         ValidadorArgumento.validarPositivo(numeroPredial, SE_DEBE_INGRESAR_NUMERO_PREDIAL);
-        ValidadorArgumento.validarPositivo(codigoPostal, SE_DEBE_INGRESAR_CODIGO_POSTAL);
         ValidadorArgumento.validarPositivo(avaluoCatastral, SE_DEBE_INGRESAR_AVALUO_CATASTRAL);
-        ValidadorArgumento.validarPositivo(idPropietario, EL_PROPIETARIO_ES_OBLIGATORIO);
 
         ValidadorArgumento.validarMenor(VALOR_MINIMO_AREA_TOTAL, areaTotal, String.format(EL_AREA_TOTAL_DEBE_SER_MAYOR_O_IGUAL_A, VALOR_MINIMO_AREA_TOTAL));
         ValidadorArgumento.validarMenor(areaConstruida, areaTotal, EL_AREA_CONSTRUIDA_NO_DEBE_SER_MAYOR_A_AREA_TOTAL);
@@ -61,11 +58,10 @@ public class Inmueble {
 
         this.id = id;
         this.numeroPredial = numeroPredial;
-        this.codigoPostal = codigoPostal;
         this.direccion = direccion;
         this.areaTotal = areaTotal;
         this.areaConstruida = areaConstruida;
         this.avaluoCatastral = avaluoCatastral;
-        this.idPropietario = idPropietario;
+        this.propietario = propietario;
     }
 }

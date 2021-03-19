@@ -6,7 +6,7 @@ import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
 import com.ceiba.dominio.excepcion.ExcepcionValorObligatorio;
 import com.ceiba.tarifa.modelo.entidad.Tarifa;
 import com.ceiba.tarifa.puerto.repositorio.RepositorioTarifa;
-import com.ceiba.tarifa.servicio.testdatabuilder.TarifaTestDataBuilder;
+import com.ceiba.tarifa.testdatabuilder.TarifaTestDataBuilder;
 import org.junit.Test;
 import org.mockito.Mockito;
 

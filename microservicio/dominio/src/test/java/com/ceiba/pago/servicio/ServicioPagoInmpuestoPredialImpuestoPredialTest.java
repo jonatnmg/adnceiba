@@ -22,7 +22,7 @@ public class ServicioPagoInmpuestoPredialImpuestoPredialTest {
     public void validarPropietarioNuloTest() {
         // arrange
         PagoTestDataBuilder pagoTestDataBuilder = new PagoTestDataBuilder()
-                .conIdPropietario(null);
+                .conPropietario(null);
 
         // act - assert
         BasePrueba.assertThrows(
@@ -34,7 +34,7 @@ public class ServicioPagoInmpuestoPredialImpuestoPredialTest {
     public void validarInmuebleNuloTest() {
         // arrange
         PagoTestDataBuilder pagoTestDataBuilder = new PagoTestDataBuilder()
-                .conIdInmueble(null);
+                .conInmueble(null);
 
         // act - assert
         BasePrueba.assertThrows(

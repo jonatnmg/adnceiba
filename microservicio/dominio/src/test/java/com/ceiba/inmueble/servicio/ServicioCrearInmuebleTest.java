@@ -24,7 +24,6 @@ public class ServicioCrearInmuebleTest {
     private static final int VALOR_MINIMO_AREA_CONSTRUIDA = 0;
     private static final String EL_AREA_TOTAL_DEBE_SER_MAYOR_O_IGUAL_A = "El area total debe ser mayor o igual a %s";
 
-    private static final int CODIGO_POSTAL_INCORRECTO = -1;
     private static final int AVALUO_CATASTRAL_INCORRECTO = -1000000;
     private static final Long NUMERO_PREDIAL_INCORRECTO = -1005554L;
     private static final Long ID_PROPIETARIO_INCORRECTO = 0L;
@@ -84,17 +83,6 @@ public class ServicioCrearInmuebleTest {
                 ExcepcionValorInvalido.class, SE_DEBE_INGRESAR_NUMERO_PREDIAL);
     }
 
-    @Test
-    public void validarCodigoPostalValorPositivoTest() {
-        // arrange
-        InmuebleTestDataBuilder inmuebleTestDataBuilder = new InmuebleTestDataBuilder()
-                .conCodigoPostal(CODIGO_POSTAL_INCORRECTO);
-
-        // act - assert
-        BasePrueba.assertThrows(
-                () -> inmuebleTestDataBuilder.build(),
-                ExcepcionValorInvalido.class, SE_DEBE_INGRESAR_CODIGO_POSTAL);
-    }
 
     @Test
     public void validarAvaluoCatastralPositivoTest() {
@@ -108,17 +96,6 @@ public class ServicioCrearInmuebleTest {
                 ExcepcionValorInvalido.class, SE_DEBE_INGRESAR_AVALUO_CATASTRAL);
     }
 
-    @Test
-    public void validarIdPropietarioPositivoTest() {
-        // arrange
-        InmuebleTestDataBuilder inmuebleTestDataBuilder = new InmuebleTestDataBuilder()
-                .conIdPropietario(ID_PROPIETARIO_INCORRECTO);
-
-        // act - assert
-        BasePrueba.assertThrows(
-                () -> inmuebleTestDataBuilder.build(),
-                ExcepcionValorInvalido.class, EL_PROPIETARIO_ES_OBLIGATORIO);
-    }
 
     @Test
     public void validarAreaConstruidaPositivoTest() {

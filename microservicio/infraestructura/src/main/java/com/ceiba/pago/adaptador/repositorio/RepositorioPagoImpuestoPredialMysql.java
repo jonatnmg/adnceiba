@@ -46,7 +46,6 @@ public class RepositorioPagoImpuestoPredialMysql implements RepositorioPagoImpue
     @Override
     public Long crear(PagoImpuestoPredial pagoImpuestoPredial) {
         SqlParameterSource paramSource = this.obtenerParametrosPagarImpuestoPredial(pagoImpuestoPredial);
-        System.out.println("paramSource = " + paramSource);
         return this.customNamedParameterJdbcTemplate.crear(paramSource, sqlCrear);
 
     }

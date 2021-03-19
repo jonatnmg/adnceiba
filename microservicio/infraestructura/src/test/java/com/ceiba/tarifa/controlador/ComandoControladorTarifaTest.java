@@ -2,7 +2,7 @@ package com.ceiba.tarifa.controlador;
 
 import com.ceiba.ApplicationMock;
 import com.ceiba.tarifa.comando.ComandoTarifa;
-import com.ceiba.tarifa.servicio.testdatabuilder.ComandoTarifaTestDataBuilder;
+import com.ceiba.tarifa.testdatabuilder.ComandoTarifaTestDataBuilder;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;

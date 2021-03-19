@@ -13,10 +13,9 @@ public class ComandoInmueble {
 
     private Long id;
     private Long numeroPredial;
-    private int codigoPostal;
     private String direccion;
     private int areaTotal;
     private int areaConstruida;
     private long avaluoCatastral;
-    private long propietario;
+    private long idPropietario;
 }
