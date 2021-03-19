@@ -69,7 +69,6 @@ public class ComandoInmuebleTestDataBuilder {
     public ComandoInmueble build() {
         return new ComandoInmueble(this.id,
                 this.numeroPredial,
-                this.codigoPostal,
                 this.direccion,
                 this.areaTotal,
                 this.areaConstruida,

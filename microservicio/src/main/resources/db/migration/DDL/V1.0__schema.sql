@@ -39,14 +39,17 @@ CREATE TABLE inmueble (
 
 CREATE TABLE pago (
   id int(11) NOT NULL AUTO_INCREMENT,
-  id_propietario int(11) not null,
-  id_inmueble int(11) not null,
-  fecha_pago date not null,
-  anio int(11) not null,
-  valor_pagado bigint(11) not null,
+  id_propietario int(11) DEFAULT NULL,
+  id_inmueble int(11) DEFAULT NULL,
+  fecha_pago date DEFAULT NULL,
+  anio int(11) DEFAULT NULL,
+  valor_pagado bigint(11) DEFAULT NULL,
+  id_tarifa int(11) DEFAULT NULL,
   PRIMARY KEY (id),
   KEY FK_P_PROPIETARIO_idx (id_propietario),
   KEY FK_P_INMUEBLE_idx (id_inmueble),
+  KEY FK_P_PAGO_idx (id_tarifa),
   CONSTRAINT FK_P_INMUEBLE FOREIGN KEY (id_inmueble) REFERENCES inmueble (id) ON UPDATE NO ACTION,
+  CONSTRAINT FK_P_PAGO FOREIGN KEY (id_tarifa) REFERENCES tarifa (id) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT FK_P_PROPIETARIO FOREIGN KEY (id_propietario) REFERENCES propietario (id) ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
