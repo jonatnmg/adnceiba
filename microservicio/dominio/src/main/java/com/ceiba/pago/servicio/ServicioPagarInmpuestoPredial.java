@@ -4,13 +4,13 @@ import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
 import com.ceiba.pago.modelo.entidad.PagoImpuestoPredial;
 import com.ceiba.pago.puerto.repositorio.RepositorioPagoImpuestoPredial;
 
-public class ServicioPagoInmpuestoPredial {
+public class ServicioPagarInmpuestoPredial {
 
     private final RepositorioPagoImpuestoPredial repositorioPagoImpuestoPredial;
 
     private static final String EL_PAGO_YA_EXISTE_EN_EL_SISTEMA = "El pago ya existe en el sistema";
 
-    public ServicioPagoInmpuestoPredial(RepositorioPagoImpuestoPredial repositorioPagoImpuestoPredial) {
+    public ServicioPagarInmpuestoPredial(RepositorioPagoImpuestoPredial repositorioPagoImpuestoPredial) {
         this.repositorioPagoImpuestoPredial = repositorioPagoImpuestoPredial;
     }
 

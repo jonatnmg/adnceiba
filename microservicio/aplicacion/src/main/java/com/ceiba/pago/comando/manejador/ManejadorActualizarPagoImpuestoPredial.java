@@ -1,0 +1,35 @@
+package com.ceiba.pago.comando.manejador;
+
+import com.ceiba.inmueble.puerto.repositorio.RepositorioInmueble;
+import com.ceiba.manejador.ManejadorComando;
+import com.ceiba.pago.comando.ComandoPago;
+import com.ceiba.pago.comando.fabrica.FabricaPagoImpuestoPredial;
+import com.ceiba.pago.modelo.entidad.PagoImpuestoPredial;
+import com.ceiba.pago.servicio.ServicioActualizarPagoImpuestoPredial;
+import com.ceiba.propietario.puerto.repositorio.RepositorioPropietario;
+import com.ceiba.tarifa.puerto.repositorio.RepositorioTarifa;
+import org.springframework.stereotype.Component;
+
+@Component
+public class ManejadorActualizarPagoImpuestoPredial implements ManejadorComando<ComandoPago> {
+
+    private final FabricaPagoImpuestoPredial fabricaPagoImpuestoPredial;
+    private final ServicioActualizarPagoImpuestoPredial servicioActualizarPagoImpuestoPredial;
+    private final RepositorioPropietario repositorioPropietario;
+    private final RepositorioInmueble repositorioInmueble;
+    private final RepositorioTarifa repositorioTarifa;
+
+    public ManejadorActualizarPagoImpuestoPredial(FabricaPagoImpuestoPredial fabricaPagoImpuestoPredial, ServicioActualizarPagoImpuestoPredial servicioActualizarPagoImpuestoPredial, RepositorioPropietario repositorioPropietario, RepositorioInmueble repositorioInmueble, RepositorioTarifa repositorioTarifa) {
+        this.fabricaPagoImpuestoPredial = fabricaPagoImpuestoPredial;
+        this.servicioActualizarPagoImpuestoPredial = servicioActualizarPagoImpuestoPredial;
+        this.repositorioPropietario = repositorioPropietario;
+        this.repositorioInmueble = repositorioInmueble;
+        this.repositorioTarifa = repositorioTarifa;
+    }
+
+    @Override
+    public void ejecutar(ComandoPago comandoPago) {
+        PagoImpuestoPredial pagoImpuestoPredial = this.fabricaPagoImpuestoPredial.crear(comandoPago, repositorioPropietario, repositorioInmueble, repositorioTarifa);
+        this.servicioActualizarPagoImpuestoPredial.ejecutar(pagoImpuestoPredial);
+    }
+}

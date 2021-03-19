@@ -4,6 +4,7 @@ import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
 import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
 import com.ceiba.tarifa.modelo.entidad.Tarifa;
 import com.ceiba.tarifa.puerto.repositorio.RepositorioTarifa;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Repository;
 
@@ -78,6 +79,10 @@ public class RepositorioTarifaMysql implements RepositorioTarifa {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("id", id);
 
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlBuscarTarifaPorId, paramSource, new MapeoEntidadTarifa());
+        try {
+            return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlBuscarTarifaPorId, paramSource, new MapeoEntidadTarifa());
+        } catch (EmptyResultDataAccessException emptyResultDataAccessException) {
+            return null;
+        }
     }
 }

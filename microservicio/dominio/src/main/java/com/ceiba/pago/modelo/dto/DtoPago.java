@@ -13,7 +13,7 @@ public class DtoPago {
     private Long id;
     private DtoPropietario propietario;
     private DtoInmueble inmueble;
-    private DtoTarifa dtoTarifa;
+    private DtoTarifa tarifa;
     private int anio;
     private Long valorPagado;
     private String fecha;

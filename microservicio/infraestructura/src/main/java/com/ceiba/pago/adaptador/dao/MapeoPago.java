@@ -23,7 +23,6 @@ public class MapeoPago implements RowMapper<DtoPago>, MapperResult {
         String fechaPago = resultSet.getString("fecha_pago");
 
         Long numeroPredial = resultSet.getLong("numero_predial");
-        int codigoPostal = resultSet.getInt("codigo_postal");
         String direccion = resultSet.getString("direccion");
         int areaTotal = resultSet.getInt("area_total");
         int areaConstruida = resultSet.getInt("area_construida");

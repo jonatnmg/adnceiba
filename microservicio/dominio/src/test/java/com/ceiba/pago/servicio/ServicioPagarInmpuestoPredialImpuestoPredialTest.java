@@ -6,7 +6,7 @@ import com.ceiba.dominio.excepcion.ExcepcionValorObligatorio;
 import com.ceiba.pago.servicio.testdatabuilder.PagoTestDataBuilder;
 import org.junit.Test;
 
-public class ServicioPagoInmpuestoPredialImpuestoPredialTest {
+public class ServicioPagarInmpuestoPredialImpuestoPredialTest {
 
     private static final String SE_DEBE_INGRESAR_UN_PROPIETARIO = "Se debe ingresar un identificador de propietario";
     private static final String SE_DEBE_INGRESAR_UN_INMUEBLE = "Se debe ingresar un identificador de inmueble";
