@@ -8,7 +8,6 @@ import lombok.Getter;
 public class Inmueble {
 
     private static final String SE_DEBE_INGRESAR_NUMERO_PREDIAL = "Se debe ingresar el numero predial";
-    private static final String SE_DEBE_INGRESAR_CODIGO_POSTAL = "Se debe ingresar el codigo postal";
     private static final String SE_DEBE_INGRESAR_DIRECCION = "Se debe ingresar una direccion";
     private static final String SE_DEBE_INGRESAR_AREA_TOTAL = "Se debe ingresar area total";
     private static final String SE_DEBE_INGRESAR_AREA_CONSTRUIDA = "Se debe ingresar area construida";

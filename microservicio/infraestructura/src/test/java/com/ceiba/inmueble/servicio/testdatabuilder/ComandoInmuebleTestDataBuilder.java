@@ -5,7 +5,6 @@ import com.ceiba.inmueble.comando.ComandoInmueble;
 public class ComandoInmuebleTestDataBuilder {
 
     private static final Long NUMERO_PREDIAL = 12694888L;
-    private static final int CODIGO_POSTAL = 635897;
     private static final String DIRECCION = "Calle 49 15 - 69";
     private static final int AREA_TOTAL = 250;
     private static final int AREA_CONSTRUIDA = 150;
@@ -14,7 +13,6 @@ public class ComandoInmuebleTestDataBuilder {
 
     private Long id;
     private Long numeroPredial;
-    private int codigoPostal;
     private String direccion;
     private int areaTotal;
     private int areaConstruida;
@@ -23,7 +21,6 @@ public class ComandoInmuebleTestDataBuilder {
 
     public ComandoInmuebleTestDataBuilder() {
         this.numeroPredial = NUMERO_PREDIAL;
-        this.codigoPostal = CODIGO_POSTAL;
         this.direccion = DIRECCION;
         this.areaTotal = AREA_TOTAL;
         this.areaConstruida = AREA_CONSTRUIDA;
@@ -36,10 +33,6 @@ public class ComandoInmuebleTestDataBuilder {
         return this;
     }
 
-    public ComandoInmuebleTestDataBuilder conCodigoPostal(int codigoPostal) {
-        this.codigoPostal = codigoPostal;
-        return this;
-    }
 
     public ComandoInmuebleTestDataBuilder conDireccion(String direccion) {
         this.direccion = direccion;

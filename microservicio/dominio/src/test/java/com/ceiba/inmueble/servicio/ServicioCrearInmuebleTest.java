@@ -15,7 +15,6 @@ public class ServicioCrearInmuebleTest {
     private static final String EL_INMUEBLE_YA_EXISTE_EN_EL_SISTEMA = "El inmueble ya existe en el sistema";
 
     private static final String SE_DEBE_INGRESAR_NUMERO_PREDIAL = "Se debe ingresar el numero predial";
-    private static final String SE_DEBE_INGRESAR_CODIGO_POSTAL = "Se debe ingresar el codigo postal";
     private static final String SE_DEBE_INGRESAR_DIRECCION = "Se debe ingresar una direccion";
     private static final String SE_DEBE_INGRESAR_AVALUO_CATASTRAL = "Se debe ingresar avaluo catastral";
 

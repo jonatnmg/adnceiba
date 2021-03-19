@@ -15,7 +15,6 @@ public class MapeoInmueble implements RowMapper<DtoInmueble>, MapperResult {
 
         Long id = rs.getLong("id");
         Long numeroPredial = rs.getLong("numero_predial");
-        int codigoPostal = rs.getInt("codigo_postal");
         String direccion = rs.getString("direccion");
         int areaTotal = rs.getInt("area_total");
         int areaConstruida = rs.getInt("area_construida");
