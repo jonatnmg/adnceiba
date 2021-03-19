@@ -27,7 +27,7 @@ public class MapeoEntidadInmueble implements RowMapper<Inmueble>, MapperResult {
         String correo = rs.getString("correo");
         String direccionPropietario = rs.getString("direccion_propietario");
 
-        Propietario propietario = new Propietario(id, nombre, numeroIdentificacion, telefono, correo, direccionPropietario);
+        Propietario propietario = new Propietario(idPropietario, nombre, numeroIdentificacion, telefono, correo, direccionPropietario);
 
         return new Inmueble(id, numeroPredial, direccion, areaTotal, areaConstruida, avaluoCatrastral, propietario);
     }
