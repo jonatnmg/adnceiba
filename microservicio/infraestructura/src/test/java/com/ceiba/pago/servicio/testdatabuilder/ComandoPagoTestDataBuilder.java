@@ -2,20 +2,23 @@ package com.ceiba.pago.servicio.testdatabuilder;
 
 import com.ceiba.pago.comando.ComandoPago;
 
+import java.time.LocalDate;
+
 public class ComandoPagoTestDataBuilder {
 
     private static final Long ID_PROPIETARIO = 1L;
     private static final Long ID_INMUEBLE = 1L;
     private static final int ANIO = 2021;
     private static final Long VALOR_PAGADO = 704477l;
-    private static final String FECHA_PAGO = "17/03/2021";
+    private static final LocalDate FECHA_PAGO = LocalDate.now();
 
     private Long id;
     private Long idPropietario;
     private Long idInmueble;
+    private Long idTarifa;
     private int anio;
     private Long valorPagado;
-    private String fecha;
+    private LocalDate fecha;
 
     public ComandoPagoTestDataBuilder() {
         this.idPropietario = ID_PROPIETARIO;
@@ -31,6 +34,6 @@ public class ComandoPagoTestDataBuilder {
     }
 
     public ComandoPago build() {
-        return new ComandoPago(this.id, this.idPropietario, this.idInmueble, this.anio, this.valorPagado, this.fecha);
+        return new ComandoPago(this.id, this.idPropietario, this.idInmueble, this.idTarifa, this.anio, this.valorPagado, this.fecha);
     }
 }

@@ -7,6 +7,8 @@ import com.ceiba.pago.puerto.repositorio.RepositorioPagoImpuestoPredial;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Repository;
 
+import java.util.Map;
+
 @Repository
 public class RepositorioPagoImpuestoPredialMysql implements RepositorioPagoImpuestoPredial {
 
@@ -18,23 +20,57 @@ public class RepositorioPagoImpuestoPredialMysql implements RepositorioPagoImpue
     @SqlStatement(namespace = "pago", value = "existe")
     private static String sqlExiste;
 
+    @SqlStatement(namespace = "pago", value = "actualizar")
+    private static String sqlActualizar;
+
+    @SqlStatement(namespace = "pago", value = "eliminar")
+    private static String sqlEliminar;
+
+    @SqlStatement(namespace = "pago", value = "existeExcluyendoId")
+    private static String sqlExisteExcluyendoId;
+
     public RepositorioPagoImpuestoPredialMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
     }
 
+    private MapSqlParameterSource obtenerParametrosPagarImpuestoPredial(PagoImpuestoPredial pagoImpuestoPredial) {
+
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("idPropietario", pagoImpuestoPredial.getPropietario().getId());
+        paramSource.addValue("idInmueble", pagoImpuestoPredial.getInmueble().getId());
+        paramSource.addValue("fechaPago", pagoImpuestoPredial.getFechaPago());
+        paramSource.addValue("anio", pagoImpuestoPredial.getAnio());
+        paramSource.addValue("valorPagado", pagoImpuestoPredial.getValorPagado());
+
+//        Map<String, Object> parameters = new HashMap<String, Object>();
+//        parameters.put("idPropietario", pagoImpuestoPredial.getPropietario().getId());
+//        parameters.put("idInmueble", pagoImpuestoPredial.getInmueble().getId());
+//        parameters.put("fechaPago", pagoImpuestoPredial.getFechaPago());
+//        parameters.put("anio", pagoImpuestoPredial.getAnio());
+//        parameters.put("valorPagado", pagoImpuestoPredial.getValorPagado());
+
+        return paramSource;
+    }
+
     @Override
     public Long crear(PagoImpuestoPredial pagoImpuestoPredial) {
-        return this.customNamedParameterJdbcTemplate.crear(pagoImpuestoPredial, sqlCrear);
+        MapSqlParameterSource paramSource = this.obtenerParametrosPagarImpuestoPredial(pagoImpuestoPredial);
+
+        return this.customNamedParameterJdbcTemplate.crear(paramSource, sqlCrear);
     }
 
     @Override
     public void actualizar(PagoImpuestoPredial pagoImpuestoPredial) {
-        // TODO actualizar
+        MapSqlParameterSource paramSource = this.obtenerParametrosPagarImpuestoPredial(pagoImpuestoPredial);
+        this.customNamedParameterJdbcTemplate.actualizar(paramSource, sqlActualizar);
     }
 
     @Override
     public void eliminar(Long id) {
-        // TODO eliminar
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("id", id);
+
+        this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlEliminar, paramSource);
     }
 
     @Override

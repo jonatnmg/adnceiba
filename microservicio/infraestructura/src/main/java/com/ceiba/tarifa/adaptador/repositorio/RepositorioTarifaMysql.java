@@ -31,6 +31,9 @@ public class RepositorioTarifaMysql implements RepositorioTarifa {
     @SqlStatement(namespace = "tarifa", value = "existeExcluyendoId")
     private static String sqlExisteExcluyendoId;
 
+    @SqlStatement(namespace = "tarifa", value = "buscarTarifaPorId")
+    private static String sqlBuscarTarifaPorId;
+
     @Override
     public Long crear(Tarifa tarifa) {
         return this.customNamedParameterJdbcTemplate.crear(tarifa, sqlCrear);
@@ -68,5 +71,13 @@ public class RepositorioTarifaMysql implements RepositorioTarifa {
         paramSource.addValue("anio", anio);
 
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteExcluyendoId, paramSource, Boolean.class);
+    }
+
+    @Override
+    public Tarifa buscarTarifaPorId(Long id) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("id", id);
+
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlBuscarTarifaPorId, paramSource, new MapeoEntidadTarifa());
     }
 }

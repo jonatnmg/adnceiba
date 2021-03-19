@@ -17,6 +17,7 @@ public class PagoImpuestoPredial {
 
     private static final String SE_DEBE_INGRESAR_UN_PROPIETARIO = "Se debe ingresar un identificador de propietario";
     private static final String SE_DEBE_INGRESAR_UN_INMUEBLE = "Se debe ingresar un identificador de inmueble";
+    private static final String SE_DEBE_INGRESAR_UNA_TARIFA = "Se debe ingresar un identificador de tarifa";
     private static final String SE_DEBE_INGRESAR_UN_ANIO = "Se debe ingresar un año";
     private static final String SE_DEBE_INGRESAR_UN_VALOR_PAGADO = "Se debe ingresar un valor pagado";
     private static final String SE_DEBE_INGRESAR_UNA_FECHA = "Se debe ingresar una fecha";
@@ -51,6 +52,7 @@ public class PagoImpuestoPredial {
         ValidadorArgumento.validarObligatorio(inmueble, SE_DEBE_INGRESAR_UN_INMUEBLE);
         ValidadorArgumento.validarObligatorio(valorPagado, SE_DEBE_INGRESAR_UN_VALOR_PAGADO);
         ValidadorArgumento.validarObligatorio(fechaPago, SE_DEBE_INGRESAR_UNA_FECHA);
+        ValidadorArgumento.validarObligatorio(tarifa, SE_DEBE_INGRESAR_UNA_TARIFA);
 
         ValidadorArgumento.validarPositivo(anio, SE_DEBE_INGRESAR_UN_ANIO);
         ValidadorArgumento.validarPositivo(valorPagado, SE_DEBE_INGRESAR_UN_VALOR_PAGADO);

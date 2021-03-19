@@ -4,6 +4,7 @@ import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
 import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
 import com.ceiba.inmueble.modelo.entidad.Inmueble;
 import com.ceiba.inmueble.puerto.repositorio.RepositorioInmueble;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Repository;
 
@@ -27,6 +28,8 @@ public class RepositorioInmuebleMysql implements RepositorioInmueble {
     @SqlStatement(namespace = "inmueble", value = "existeExcluyendoId")
     private static String sqlExisteExcluyendoId;
 
+    @SqlStatement(namespace = "inmueble", value = "buscarInmueblePorId")
+    private static String sqlBuscarInmueblePorId;
 
     public RepositorioInmuebleMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
@@ -67,5 +70,17 @@ public class RepositorioInmuebleMysql implements RepositorioInmueble {
         paramSource.addValue("direccion", direccion);
 
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteExcluyendoId, paramSource, Boolean.class);
+    }
+
+    @Override
+    public Inmueble buscarInmueblePorId(Long id) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("id", id);
+
+        try {
+            return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlBuscarInmueblePorId, paramSource, new MapeoEntidadInmueble());
+        } catch (EmptyResultDataAccessException emptyResultDataAccessException) {
+            return null;
+        }
     }
 }

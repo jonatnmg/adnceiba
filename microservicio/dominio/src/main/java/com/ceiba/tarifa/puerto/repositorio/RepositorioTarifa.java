@@ -44,4 +44,12 @@ public interface RepositorioTarifa {
      */
     boolean existeExcluyendoId(Long id, Long avaluoMinimo, Long avaluoMaximo, int anio);
 
+    /**
+     * Buscar tarifa por id tarifa
+     *
+     * @param id
+     * @return
+     */
+    Tarifa buscarTarifaPorId(Long id);
+
 }

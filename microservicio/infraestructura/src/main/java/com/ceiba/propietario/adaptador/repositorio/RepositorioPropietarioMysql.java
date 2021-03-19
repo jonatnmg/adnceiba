@@ -4,6 +4,7 @@ import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
 import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
 import com.ceiba.propietario.modelo.entidad.Propietario;
 import com.ceiba.propietario.puerto.repositorio.RepositorioPropietario;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Repository;
 
@@ -85,6 +86,11 @@ public class RepositorioPropietarioMysql implements RepositorioPropietario {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("id", idPropietario);
 
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlBuscarPropietarioPorId, paramSource, Propietario.class);
+        try {
+            return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlBuscarPropietarioPorId, paramSource, new MapeoEntidadPropietario());
+        } catch (EmptyResultDataAccessException emptyResultDataAccessException) {
+            return null;
+        }
+
     }
 }

@@ -43,4 +43,12 @@ public interface RepositorioInmueble {
      * @return si existe o no
      */
     boolean existeExcluyendoId(Long id, Long numeroPredial, String direccion);
+
+    /**
+     * Buscar inmueble por id inmueble
+     *
+     * @param id
+     * @return
+     */
+    Inmueble buscarInmueblePorId(Long id);
 }
