@@ -2,7 +2,7 @@ package com.ceiba.pago.comando.manejador;
 
 import com.ceiba.inmueble.puerto.repositorio.RepositorioInmueble;
 import com.ceiba.manejador.ManejadorComando;
-import com.ceiba.pago.comando.ComandoPago;
+import com.ceiba.pago.comando.ComandoPagoImpuestoPredial;
 import com.ceiba.pago.comando.fabrica.FabricaPagoImpuestoPredial;
 import com.ceiba.pago.modelo.entidad.PagoImpuestoPredial;
 import com.ceiba.pago.servicio.ServicioActualizarPagoImpuestoPredial;
@@ -11,7 +11,7 @@ import com.ceiba.tarifa.puerto.repositorio.RepositorioTarifa;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ManejadorActualizarPagoImpuestoPredial implements ManejadorComando<ComandoPago> {
+public class ManejadorActualizarPagoImpuestoPredial implements ManejadorComando<ComandoPagoImpuestoPredial> {
 
     private final FabricaPagoImpuestoPredial fabricaPagoImpuestoPredial;
     private final ServicioActualizarPagoImpuestoPredial servicioActualizarPagoImpuestoPredial;
@@ -28,8 +28,8 @@ public class ManejadorActualizarPagoImpuestoPredial implements ManejadorComando<
     }
 
     @Override
-    public void ejecutar(ComandoPago comandoPago) {
-        PagoImpuestoPredial pagoImpuestoPredial = this.fabricaPagoImpuestoPredial.crear(comandoPago, repositorioPropietario, repositorioInmueble, repositorioTarifa);
+    public void ejecutar(ComandoPagoImpuestoPredial comandoPagoImpuestoPredial) {
+        PagoImpuestoPredial pagoImpuestoPredial = this.fabricaPagoImpuestoPredial.crear(comandoPagoImpuestoPredial, repositorioPropietario, repositorioInmueble, repositorioTarifa);
         this.servicioActualizarPagoImpuestoPredial.ejecutar(pagoImpuestoPredial);
     }
 }

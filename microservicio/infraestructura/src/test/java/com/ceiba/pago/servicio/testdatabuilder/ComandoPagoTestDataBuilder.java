@@ -1,6 +1,6 @@
 package com.ceiba.pago.servicio.testdatabuilder;
 
-import com.ceiba.pago.comando.ComandoPago;
+import com.ceiba.pago.comando.ComandoPagoImpuestoPredial;
 
 import java.time.LocalDate;
 
@@ -33,7 +33,7 @@ public class ComandoPagoTestDataBuilder {
         return this;
     }
 
-    public ComandoPago build() {
-        return new ComandoPago(this.id, this.idPropietario, this.idInmueble, this.idTarifa, this.anio, this.valorPagado, this.fecha);
+    public ComandoPagoImpuestoPredial build() {
+        return new ComandoPagoImpuestoPredial(this.id, this.idPropietario, this.idInmueble, this.idTarifa, this.anio, this.valorPagado, this.fecha);
     }
 }

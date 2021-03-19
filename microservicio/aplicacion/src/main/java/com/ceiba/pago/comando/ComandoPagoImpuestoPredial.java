@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ComandoPago {
+public class ComandoPagoImpuestoPredial {
     private Long id;
     private Long idPropietario;
     private Long idInmueble;

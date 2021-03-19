@@ -1,7 +1,7 @@
 package com.ceiba.pago.controlador;
 
 import com.ceiba.ApplicationMock;
-import com.ceiba.pago.comando.ComandoPago;
+import com.ceiba.pago.comando.ComandoPagoImpuestoPredial;
 import com.ceiba.pago.servicio.testdatabuilder.ComandoPagoTestDataBuilder;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
@@ -30,12 +30,12 @@ public class ComandoControladorPagoImpuestoPredialTest {
     @Test
     public void crear() throws Exception {
         // arrange
-        ComandoPago comandoPago = new ComandoPagoTestDataBuilder().build();
+        ComandoPagoImpuestoPredial comandoPagoImpuestoPredial = new ComandoPagoTestDataBuilder().build();
 
         // act - assert
         mockMvc.perform(post("/pagos")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(comandoPago)))
+                .content(objectMapper.writeValueAsString(comandoPagoImpuestoPredial)))
                 .andExpect(status().isOk());
     }
 

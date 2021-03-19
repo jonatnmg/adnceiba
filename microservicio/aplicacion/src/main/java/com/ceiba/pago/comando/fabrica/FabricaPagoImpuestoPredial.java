@@ -2,7 +2,7 @@ package com.ceiba.pago.comando.fabrica;
 
 import com.ceiba.inmueble.modelo.entidad.Inmueble;
 import com.ceiba.inmueble.puerto.repositorio.RepositorioInmueble;
-import com.ceiba.pago.comando.ComandoPago;
+import com.ceiba.pago.comando.ComandoPagoImpuestoPredial;
 import com.ceiba.pago.modelo.entidad.PagoImpuestoPredial;
 import com.ceiba.propietario.modelo.entidad.Propietario;
 import com.ceiba.propietario.puerto.repositorio.RepositorioPropietario;
@@ -13,18 +13,18 @@ import org.springframework.stereotype.Component;
 @Component
 public class FabricaPagoImpuestoPredial {
 
-    public PagoImpuestoPredial crear(ComandoPago comandoPago, RepositorioPropietario repositorioPropietario, RepositorioInmueble repositorioInmueble, RepositorioTarifa repositorioTarifa) {
+    public PagoImpuestoPredial crear(ComandoPagoImpuestoPredial comandoPagoImpuestoPredial, RepositorioPropietario repositorioPropietario, RepositorioInmueble repositorioInmueble, RepositorioTarifa repositorioTarifa) {
 
-        Propietario propietario = repositorioPropietario.buscarPropietarioPorId(comandoPago.getIdPropietario());
-        Inmueble inmueble = repositorioInmueble.buscarInmueblePorId(comandoPago.getIdInmueble());
-        Tarifa tarifa = repositorioTarifa.buscarTarifaPorId(comandoPago.getIdTarifa());
+        Propietario propietario = repositorioPropietario.buscarPropietarioPorId(comandoPagoImpuestoPredial.getIdPropietario());
+        Inmueble inmueble = repositorioInmueble.buscarInmueblePorId(comandoPagoImpuestoPredial.getIdInmueble());
+        Tarifa tarifa = repositorioTarifa.buscarTarifaPorId(comandoPagoImpuestoPredial.getIdTarifa());
 
-        return new PagoImpuestoPredial(comandoPago.getId(),
+        return new PagoImpuestoPredial(comandoPagoImpuestoPredial.getId(),
                 propietario,
                 inmueble,
-                comandoPago.getAnio(),
-                comandoPago.getValorPagado(),
-                comandoPago.getFecha(),
+                comandoPagoImpuestoPredial.getAnio(),
+                comandoPagoImpuestoPredial.getValorPagado(),
+                comandoPagoImpuestoPredial.getFecha(),
                 tarifa
         );
 
