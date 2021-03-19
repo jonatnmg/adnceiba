@@ -6,6 +6,7 @@ import com.ceiba.inmueble.modelo.entidad.Inmueble;
 import com.ceiba.inmueble.puerto.repositorio.RepositorioInmueble;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -35,9 +36,22 @@ public class RepositorioInmuebleMysql implements RepositorioInmueble {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
     }
 
+    private SqlParameterSource obtenerParametrosInmueble(Inmueble inmueble) {
+        SqlParameterSource paramSource = new MapSqlParameterSource()
+                .addValue("numeroPredial", inmueble.getNumeroPredial())
+                .addValue("direccion", inmueble.getDireccion())
+                .addValue("areaTotal", inmueble.getAreaTotal())
+                .addValue("areaConstruida", inmueble.getAreaConstruida())
+                .addValue("avaluoCatastral", inmueble.getAvaluoCatastral())
+                .addValue("idPropietario", inmueble.getPropietario());
+
+        return paramSource;
+    }
+
     @Override
     public Long crear(Inmueble inmueble) {
-        return this.customNamedParameterJdbcTemplate.crear(inmueble, sqlCrear);
+        SqlParameterSource paramSource = this.obtenerParametrosInmueble(inmueble);
+        return this.customNamedParameterJdbcTemplate.crear(paramSource, sqlCrear);
     }
 
     @Override
