@@ -1,5 +1,6 @@
 package com.ceiba.inmueble.servicio;
 
+import com.ceiba.dominio.excepcion.ExcepcionCrearPago;
 import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
 import com.ceiba.inmueble.modelo.entidad.Inmueble;
 import com.ceiba.inmueble.puerto.repositorio.RepositorioInmueble;
@@ -7,6 +8,7 @@ import com.ceiba.inmueble.puerto.repositorio.RepositorioInmueble;
 public class ServicioActualizarInmueble {
 
     private static final String EL_INMUEBLE_YA_EXISTE_EN_EL_SISTEMA = "El inmueble ya existe en el sistema";
+    private static final String EL_INMUEBLE_NO_SE_ENCONTRO_EN_EL_SISTEMA = "El inmueble no existe en el sistema para actualizar";
 
     private final RepositorioInmueble repositorioInmueble;
 
@@ -16,6 +18,7 @@ public class ServicioActualizarInmueble {
 
     public void ejecutar(Inmueble inmueble) {
         this.validarExistenciaPrevia(inmueble);
+        this.validarExisteInmueblePorId(inmueble);
         this.repositorioInmueble.actualizar(inmueble);
     }
 
@@ -23,6 +26,13 @@ public class ServicioActualizarInmueble {
         boolean existe = this.repositorioInmueble.existeExcluyendoId(inmueble.getId(), inmueble.getNumeroPredial(), inmueble.getDireccion());
         if (existe) {
             throw new ExcepcionDuplicidad(EL_INMUEBLE_YA_EXISTE_EN_EL_SISTEMA);
+        }
+    }
+
+    private void validarExisteInmueblePorId(Inmueble inmueble) {
+        boolean existe = this.repositorioInmueble.existePorId(inmueble.getId());
+        if (!existe) {
+            throw new ExcepcionCrearPago(EL_INMUEBLE_NO_SE_ENCONTRO_EN_EL_SISTEMA);
         }
     }
 }

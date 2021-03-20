@@ -51,4 +51,12 @@ public interface RepositorioInmueble {
      * @return
      */
     Inmueble buscarInmueblePorId(Long id);
+
+    /**
+     * Permite validar si existe un inmueble por id
+     *
+     * @param idInmueble
+     * @return si existe o no
+     */
+    boolean existePorId(Long idInmueble);
 }

@@ -11,7 +11,6 @@ import org.mockito.Mockito;
 public class ServicioCrearInmuebleTest {
 
     private static final String EL_INMUEBLE_YA_EXISTE_EN_EL_SISTEMA = "El inmueble ya existe en el sistema";
-    private static final Long NUMERO_PREDIAL_INCORRECTO = -1005554L;
 
     @Test
     public void validarCrearInmuebleTest() {
