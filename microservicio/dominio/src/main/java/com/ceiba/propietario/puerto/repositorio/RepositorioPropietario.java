@@ -65,4 +65,5 @@ public interface RepositorioPropietario {
      * @return si existe o no
      */
     boolean existePorId(Long idPropietario);
+
 }

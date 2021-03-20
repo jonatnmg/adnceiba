@@ -33,6 +33,7 @@ public class ManejadorError extends ResponseEntityExceptionHandler {
         //en caso de tener otra excepcion matricularla aca
         CODIGOS_ESTADO.put(ExcepcionFechaIncorrecta.class.getSimpleName(), HttpStatus.BAD_REQUEST.value());
         CODIGOS_ESTADO.put(ExcepcionCrearPago.class.getSimpleName(), HttpStatus.BAD_REQUEST.value());
+        CODIGOS_ESTADO.put(ExcepcionRegistroVinculado.class.getSimpleName(), HttpStatus.BAD_REQUEST.value());
     }
 
     @ExceptionHandler(Exception.class)

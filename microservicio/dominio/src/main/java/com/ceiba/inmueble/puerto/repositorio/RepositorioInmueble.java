@@ -59,4 +59,12 @@ public interface RepositorioInmueble {
      * @return si existe o no
      */
     boolean existePorId(Long idInmueble);
+
+    /**
+     * Verifica si el id propietario existe en un inmueble creado
+     *
+     * @param idPropietario
+     * @return
+     */
+    boolean existePropietarioEnInmueble(Long idPropietario);
 }

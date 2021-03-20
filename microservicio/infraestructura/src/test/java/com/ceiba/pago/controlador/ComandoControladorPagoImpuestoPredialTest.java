@@ -13,13 +13,17 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = ApplicationMock.class)
 @WebMvcTest(ComandoControladorPago.class)
 public class ComandoControladorPagoImpuestoPredialTest {
+
+    private static final Long ID_INMUEBLE = 2L;
+    private static final int ANIO_PAGO = 2020;
+    private static final Long VALOR_PAGADO = 861028L;
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -30,12 +34,42 @@ public class ComandoControladorPagoImpuestoPredialTest {
     @Test
     public void crear() throws Exception {
         // arrange
-        ComandoPagoImpuestoPredial comandoPagoImpuestoPredial = new ComandoPagoTestDataBuilder().build();
+        ComandoPagoImpuestoPredial comandoPagoImpuestoPredial = new ComandoPagoTestDataBuilder()
+                .conIdInmueble(ID_INMUEBLE)
+                .conAnio(ANIO_PAGO)
+                .conValorPagado(VALOR_PAGADO)
+                .build();
 
         // act - assert
         mockMvc.perform(post("/pagos")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(comandoPagoImpuestoPredial)))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void actualizar() throws Exception {
+        // arrange
+        Long id = 1L;
+
+        ComandoPagoImpuestoPredial comandoPagoImpuestoPredial = new ComandoPagoTestDataBuilder().build();
+
+        // act - assert
+        mockMvc.perform(put("/pagos/{id}", id)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(comandoPagoImpuestoPredial)))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void eliminar() throws Exception {
+        // arrange
+        Long id = 1L;
+
+        // act - assert
+        mockMvc.perform(delete("/pagos/{id}", id)
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
 

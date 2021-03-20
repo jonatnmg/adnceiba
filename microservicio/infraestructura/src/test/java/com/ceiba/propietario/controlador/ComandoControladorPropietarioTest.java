@@ -44,7 +44,7 @@ public class ComandoControladorPropietarioTest {
     @Test
     public void actualizar() throws Exception {
         // arrange
-        Long id = 2L;
+        Long id = 1L;
         ComandoPropietario propietario = new ComandoPropietarioTestDataBuilder().build();
 
         // act - assert
@@ -57,7 +57,7 @@ public class ComandoControladorPropietarioTest {
     @Test
     public void eliminar() throws Exception {
         // arrange
-        Long id = 2L;
+        Long id = 1L;
 
         // act - assert
         mocMvc.perform(delete("/propietarios/{id}", id)

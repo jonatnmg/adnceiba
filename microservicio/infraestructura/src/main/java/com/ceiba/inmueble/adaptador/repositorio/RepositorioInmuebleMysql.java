@@ -35,6 +35,9 @@ public class RepositorioInmuebleMysql implements RepositorioInmueble {
     @SqlStatement(namespace = "inmueble", value = "existePorId")
     private static String sqlExistePorId;
 
+    @SqlStatement(namespace = "inmueble", value = "existePropietarioEnInmueble")
+    private static String sqlExistePropietarioEnInmueble;
+
     public RepositorioInmuebleMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
     }
@@ -109,5 +112,13 @@ public class RepositorioInmuebleMysql implements RepositorioInmueble {
         paramSource.addValue("id", idInmueble);
 
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorId, paramSource, Boolean.class);
+    }
+
+    @Override
+    public boolean existePropietarioEnInmueble(Long idPropietario) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("idPropietario", idPropietario);
+
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePropietarioEnInmueble, paramSource, Boolean.class);
     }
 }

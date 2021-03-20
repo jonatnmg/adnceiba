@@ -104,4 +104,5 @@ public class RepositorioPropietarioMysql implements RepositorioPropietario {
 
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorId, paramSource, Boolean.class);
     }
+
 }
