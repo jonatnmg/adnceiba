@@ -2,7 +2,7 @@ package com.ceiba.propietario.controlador;
 
 import com.ceiba.ApplicationMock;
 import com.ceiba.propietario.comando.ComandoPropietario;
-import com.ceiba.propietario.servicio.testdatabuilder.ComandoPropietarioTestDataBuilder;
+import com.ceiba.propietario.testdatabuilder.ComandoPropietarioTestDataBuilder;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;

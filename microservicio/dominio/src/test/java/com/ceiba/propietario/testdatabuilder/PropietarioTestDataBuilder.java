@@ -1,4 +1,4 @@
-package com.ceiba.propietario.servicio.testdatabuilder;
+package com.ceiba.propietario.testdatabuilder;
 
 import com.ceiba.propietario.modelo.entidad.Propietario;
 

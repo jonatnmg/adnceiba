@@ -4,7 +4,7 @@ import com.ceiba.inmueble.modelo.entidad.Inmueble;
 import com.ceiba.inmueble.testdatabuilder.InmuebleTestDataBuilder;
 import com.ceiba.pago.modelo.entidad.PagoImpuestoPredial;
 import com.ceiba.propietario.modelo.entidad.Propietario;
-import com.ceiba.propietario.servicio.testdatabuilder.PropietarioTestDataBuilder;
+import com.ceiba.propietario.testdatabuilder.PropietarioTestDataBuilder;
 import com.ceiba.tarifa.modelo.entidad.Tarifa;
 
 import java.time.LocalDate;

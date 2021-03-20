@@ -2,7 +2,7 @@ package com.ceiba.inmueble.testdatabuilder;
 
 import com.ceiba.inmueble.modelo.entidad.Inmueble;
 import com.ceiba.propietario.modelo.entidad.Propietario;
-import com.ceiba.propietario.servicio.testdatabuilder.PropietarioTestDataBuilder;
+import com.ceiba.propietario.testdatabuilder.PropietarioTestDataBuilder;
 
 public class InmuebleTestDataBuilder {
 
