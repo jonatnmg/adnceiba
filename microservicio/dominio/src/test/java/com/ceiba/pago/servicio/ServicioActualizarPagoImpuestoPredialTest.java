@@ -8,13 +8,13 @@ import com.ceiba.pago.testdatabuilder.PagoImpuestoPredialTestDataBuilder;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-public class ServicioPagarInmpuestoPredialImpuestoPredialTest {
+public class ServicioActualizarPagoImpuestoPredialTest {
 
     private static final String EL_PAGO_YA_EXISTE_EN_EL_SISTEMA = "El pago ya existe en el sistema";
     private static final Long VALOR_PAGADO = 396000L;
 
     @Test
-    public void validarPagarImpuestoPredialTest() {
+    public void actualizarPagoImpuestoPredialTest() {
 
         // arrange
         Long id_esperado = 1L;
@@ -24,10 +24,11 @@ public class ServicioPagarInmpuestoPredialImpuestoPredialTest {
 
         RepositorioPagoImpuestoPredial repositorioPagoImpuestoPredial = Mockito.mock(RepositorioPagoImpuestoPredial.class);
 
-        ServicioPagarInmpuestoPredial servicioPagarInmpuestoPredial = new ServicioPagarInmpuestoPredial(repositorioPagoImpuestoPredial);
+        ServicioActualizarPagoImpuestoPredial servicioActualizarPagoImpuestoPredial = new ServicioActualizarPagoImpuestoPredial(repositorioPagoImpuestoPredial);
 
         Mockito.when(
-                repositorioPagoImpuestoPredial.existe(
+                repositorioPagoImpuestoPredial.existeExcluyendoId(
+                        pagoImpuestoPredial.getId(),
                         pagoImpuestoPredial.getPropietario().getId(),
                         pagoImpuestoPredial.getInmueble().getId(),
                         pagoImpuestoPredial.getAnio())).thenReturn(false);
@@ -35,10 +36,10 @@ public class ServicioPagarInmpuestoPredialImpuestoPredialTest {
         Mockito.when(repositorioPagoImpuestoPredial.crear(pagoImpuestoPredial)).thenReturn(id_esperado);
 
         // act
-        Long idPagoImpuestoPredial = servicioPagarInmpuestoPredial.ejecutar(pagoImpuestoPredial);
+        servicioActualizarPagoImpuestoPredial.ejecutar(pagoImpuestoPredial);
 
         // assert
-        BasePrueba.assertEqualsObject(id_esperado, idPagoImpuestoPredial);
+        Mockito.verify(repositorioPagoImpuestoPredial).actualizar(pagoImpuestoPredial);
     }
 
     @Test
@@ -52,10 +53,11 @@ public class ServicioPagarInmpuestoPredialImpuestoPredialTest {
 
         RepositorioPagoImpuestoPredial repositorioPagoImpuestoPredial = Mockito.mock(RepositorioPagoImpuestoPredial.class);
 
-        ServicioPagarInmpuestoPredial servicioPagarInmpuestoPredial = new ServicioPagarInmpuestoPredial(repositorioPagoImpuestoPredial);
+        ServicioActualizarPagoImpuestoPredial servicioActualizarPagoImpuestoPredial = new ServicioActualizarPagoImpuestoPredial(repositorioPagoImpuestoPredial);
 
         Mockito.when(
-                repositorioPagoImpuestoPredial.existe(
+                repositorioPagoImpuestoPredial.existeExcluyendoId(
+                        pagoImpuestoPredial.getId(),
                         pagoImpuestoPredial.getPropietario().getId(),
                         pagoImpuestoPredial.getInmueble().getId(),
                         pagoImpuestoPredial.getAnio())).thenReturn(true);
@@ -64,7 +66,7 @@ public class ServicioPagarInmpuestoPredialImpuestoPredialTest {
 
         // act - assert
         BasePrueba.assertThrows(
-                () -> servicioPagarInmpuestoPredial.ejecutar(pagoImpuestoPredial),
+                () -> servicioActualizarPagoImpuestoPredial.ejecutar(pagoImpuestoPredial),
                 ExcepcionDuplicidad.class, EL_PAGO_YA_EXISTE_EN_EL_SISTEMA);
     }
 }

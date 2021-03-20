@@ -7,7 +7,7 @@ import com.ceiba.inmueble.servicio.ServicioEliminarInmueble;
 import com.ceiba.pago.puerto.repositorio.RepositorioPagoImpuestoPredial;
 import com.ceiba.pago.servicio.ServicioActualizarPagoImpuestoPredial;
 import com.ceiba.pago.servicio.ServicioEliminarPagoImpuestoPredial;
-import com.ceiba.pago.servicio.ServicioPagarInmpuestoPredial;
+import com.ceiba.pago.servicio.ServicioPagarImpuestoPredial;
 import com.ceiba.propietario.puerto.repositorio.RepositorioPropietario;
 import com.ceiba.propietario.servicio.ServicioActualizarPropietario;
 import com.ceiba.propietario.servicio.ServicioCrearPropietario;
@@ -87,8 +87,8 @@ public class BeanServicio {
     }
 
     @Bean
-    public ServicioPagarInmpuestoPredial servicioCrearPago(RepositorioPagoImpuestoPredial repositorioPagoImpuestoPredial) {
-        return new ServicioPagarInmpuestoPredial(repositorioPagoImpuestoPredial);
+    public ServicioPagarImpuestoPredial servicioCrearPago(RepositorioPagoImpuestoPredial repositorioPagoImpuestoPredial) {
+        return new ServicioPagarImpuestoPredial(repositorioPagoImpuestoPredial);
     }
 
     @Bean

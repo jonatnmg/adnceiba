@@ -47,7 +47,7 @@ public class PagoImpuestoPredial {
     private LocalDate fechaPago;
 
     public PagoImpuestoPredial(Long id, Propietario propietario, Inmueble inmueble, int anio, Long valorPagado, LocalDate fechaPago, Tarifa tarifa) {
-        
+
         ValidadorArgumento.validarObligatorio(propietario, SE_DEBE_INGRESAR_UN_PROPIETARIO);
         ValidadorArgumento.validarObligatorio(inmueble, SE_DEBE_INGRESAR_UN_INMUEBLE);
         ValidadorArgumento.validarObligatorio(valorPagado, SE_DEBE_INGRESAR_UN_VALOR_PAGADO);
