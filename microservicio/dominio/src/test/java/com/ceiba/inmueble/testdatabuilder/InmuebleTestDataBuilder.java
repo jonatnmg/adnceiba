@@ -1,4 +1,4 @@
-package com.ceiba.inmueble.servicio.testdatabuilder;
+package com.ceiba.inmueble.testdatabuilder;
 
 import com.ceiba.inmueble.modelo.entidad.Inmueble;
 import com.ceiba.propietario.modelo.entidad.Propietario;

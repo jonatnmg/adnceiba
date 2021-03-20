@@ -6,7 +6,7 @@ import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
 import com.ceiba.dominio.excepcion.ExcepcionValorObligatorio;
 import com.ceiba.inmueble.modelo.entidad.Inmueble;
 import com.ceiba.inmueble.puerto.repositorio.RepositorioInmueble;
-import com.ceiba.inmueble.servicio.testdatabuilder.InmuebleTestDataBuilder;
+import com.ceiba.inmueble.testdatabuilder.InmuebleTestDataBuilder;
 import org.junit.Test;
 import org.mockito.Mockito;
 
@@ -45,29 +45,9 @@ public class ServicioCrearInmuebleTest {
                 ExcepcionDuplicidad.class, EL_INMUEBLE_YA_EXISTE_EN_EL_SISTEMA);
     }
 
-    @Test
-    public void validarDireccionNuloTest() {
-        // arrange
-        InmuebleTestDataBuilder inmuebleTestDataBuilder = new InmuebleTestDataBuilder()
-                .conDireccion(null);
 
-        // act - assert
-        BasePrueba.assertThrows(
-                () -> inmuebleTestDataBuilder.build(),
-                ExcepcionValorObligatorio.class, SE_DEBE_INGRESAR_DIRECCION);
-    }
 
-    @Test
-    public void validarNumeroPredialNuloTest() {
-        // arrange
-        InmuebleTestDataBuilder inmuebleTestDataBuilder = new InmuebleTestDataBuilder()
-                .conNumeroPredial(null);
 
-        // act - assert
-        BasePrueba.assertThrows(
-                () -> inmuebleTestDataBuilder.build(),
-                ExcepcionValorObligatorio.class, SE_DEBE_INGRESAR_NUMERO_PREDIAL);
-    }
 
 
     @Test
@@ -108,15 +88,5 @@ public class ServicioCrearInmuebleTest {
                 ExcepcionValorInvalido.class, String.format(EL_AREA_CONSTRUIDA_DEBE_SER_MAYOR_O_IGUAL_A, VALOR_MINIMO_AREA_CONSTRUIDA));
     }
 
-    @Test
-    public void validarAreaTotalPositivoTest() {
-        // arrange
-        InmuebleTestDataBuilder inmuebleTestDataBuilder = new InmuebleTestDataBuilder()
-                .conAreaTotal(AREA_TOTAL_INCORRECTO);
 
-        // act - assert
-        BasePrueba.assertThrows(
-                () -> inmuebleTestDataBuilder.build(),
-                ExcepcionValorInvalido.class, String.format(EL_AREA_TOTAL_DEBE_SER_MAYOR_O_IGUAL_A, VALOR_MINIMO_AREA_TOTAL));
-    }
 }

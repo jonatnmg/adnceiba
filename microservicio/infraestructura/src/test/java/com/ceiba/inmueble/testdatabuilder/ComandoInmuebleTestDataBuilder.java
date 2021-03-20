@@ -1,4 +1,4 @@
-package com.ceiba.inmueble.servicio.testdatabuilder;
+package com.ceiba.inmueble.testdatabuilder;
 
 import com.ceiba.inmueble.comando.ComandoInmueble;
 

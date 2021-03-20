@@ -48,6 +48,7 @@ public class Inmueble {
         ValidadorArgumento.validarLongitud(numeroPredial.toString(), LONGITUD_MINIMA_NUMERO_PREDIAL, String.format(EL_NUMERO_PREDIAL_DEBE_TENER_UNA_LONGITUD_MAYOR_O_IGUAL_A, LONGITUD_MINIMA_NUMERO_PREDIAL));
 
         ValidadorArgumento.validarPositivo(numeroPredial, SE_DEBE_INGRESAR_NUMERO_PREDIAL);
+        ValidadorArgumento.validarPositivo(areaTotal, SE_DEBE_INGRESAR_AREA_TOTAL);
         ValidadorArgumento.validarPositivo(avaluoCatastral, SE_DEBE_INGRESAR_AVALUO_CATASTRAL);
 
         ValidadorArgumento.validarMenor(VALOR_MINIMO_AREA_TOTAL, areaTotal, String.format(EL_AREA_TOTAL_DEBE_SER_MAYOR_O_IGUAL_A, VALOR_MINIMO_AREA_TOTAL));

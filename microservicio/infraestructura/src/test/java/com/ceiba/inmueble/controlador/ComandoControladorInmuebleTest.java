@@ -2,7 +2,7 @@ package com.ceiba.inmueble.controlador;
 
 import com.ceiba.ApplicationMock;
 import com.ceiba.inmueble.comando.ComandoInmueble;
-import com.ceiba.inmueble.servicio.testdatabuilder.ComandoInmuebleTestDataBuilder;
+import com.ceiba.inmueble.testdatabuilder.ComandoInmuebleTestDataBuilder;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;

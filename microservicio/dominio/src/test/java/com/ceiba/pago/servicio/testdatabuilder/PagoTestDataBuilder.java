@@ -1,7 +1,7 @@
 package com.ceiba.pago.servicio.testdatabuilder;
 
 import com.ceiba.inmueble.modelo.entidad.Inmueble;
-import com.ceiba.inmueble.servicio.testdatabuilder.InmuebleTestDataBuilder;
+import com.ceiba.inmueble.testdatabuilder.InmuebleTestDataBuilder;
 import com.ceiba.pago.modelo.entidad.PagoImpuestoPredial;
 import com.ceiba.propietario.modelo.entidad.Propietario;
 import com.ceiba.propietario.servicio.testdatabuilder.PropietarioTestDataBuilder;
