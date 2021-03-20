@@ -1,69 +1,70 @@
 package com.ceiba.pago.servicio;
 
 import com.ceiba.BasePrueba;
-import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
-import com.ceiba.dominio.excepcion.ExcepcionValorObligatorio;
-import com.ceiba.pago.servicio.testdatabuilder.PagoTestDataBuilder;
+import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
+import com.ceiba.pago.modelo.entidad.PagoImpuestoPredial;
+import com.ceiba.pago.puerto.repositorio.RepositorioPagoImpuestoPredial;
+import com.ceiba.pago.testdatabuilder.PagoImpuestoPredialTestDataBuilder;
 import org.junit.Test;
+import org.mockito.Mockito;
 
 public class ServicioPagarInmpuestoPredialImpuestoPredialTest {
 
-    private static final String SE_DEBE_INGRESAR_UN_PROPIETARIO = "Se debe ingresar un identificador de propietario";
-    private static final String SE_DEBE_INGRESAR_UN_INMUEBLE = "Se debe ingresar un identificador de inmueble";
-    private static final String SE_DEBE_INGRESAR_UN_ANIO = "Se debe ingresar un año";
-    private static final String SE_DEBE_INGRESAR_UN_VALOR_PAGADO = "Se debe ingresar un valor pagado";
-    private static final String SE_DEBE_INGRESAR_UNA_FECHA = "Se debe ingresar una fecha";
-    private static final String SE_DEBE_INGRESAR_UNA_FECHA_CON_EL_FORMATO = "Se debe ingresar una fecha con el formato %s";
-
-    private static final int ANIO_INCORRECTO = 0;
-    private static final String FORMATO_FECHA_CORRECTO = "d/MM/yyyy";
+    private static final String EL_PAGO_YA_EXISTE_EN_EL_SISTEMA = "El pago ya existe en el sistema";
+    private static final Long VALOR_PAGADO = 396000L;
 
     @Test
-    public void validarPropietarioNuloTest() {
-        // arrange
-        PagoTestDataBuilder pagoTestDataBuilder = new PagoTestDataBuilder()
-                .conPropietario(null);
+    public void validarPagarImpuestoPredialTest() {
 
-        // act - assert
-        BasePrueba.assertThrows(
-                () -> pagoTestDataBuilder.build(),
-                ExcepcionValorObligatorio.class, SE_DEBE_INGRESAR_UN_PROPIETARIO);
+        // arrange
+        Long id_esperado = 1L;
+        PagoImpuestoPredial pagoImpuestoPredial = new PagoImpuestoPredialTestDataBuilder()
+                .conValorPagado(VALOR_PAGADO)
+                .build();
+
+        RepositorioPagoImpuestoPredial repositorioPagoImpuestoPredial = Mockito.mock(RepositorioPagoImpuestoPredial.class);
+
+        ServicioPagarInmpuestoPredial servicioPagarInmpuestoPredial = new ServicioPagarInmpuestoPredial(repositorioPagoImpuestoPredial);
+
+        Mockito.when(
+                repositorioPagoImpuestoPredial.existe(
+                        pagoImpuestoPredial.getPropietario().getId(),
+                        pagoImpuestoPredial.getInmueble().getId(),
+                        pagoImpuestoPredial.getAnio())).thenReturn(false);
+
+        Mockito.when(repositorioPagoImpuestoPredial.crear(pagoImpuestoPredial)).thenReturn(id_esperado);
+
+        // act
+        Long idPagoImpuestoPredial = servicioPagarInmpuestoPredial.ejecutar(pagoImpuestoPredial);
+
+        // assert
+        BasePrueba.assertEqualsObject(id_esperado, idPagoImpuestoPredial);
     }
 
     @Test
-    public void validarInmuebleNuloTest() {
+    public void validarExistenciaPreviaPagoImpuestoPredialTest() {
+
         // arrange
-        PagoTestDataBuilder pagoTestDataBuilder = new PagoTestDataBuilder()
-                .conInmueble(null);
+        Long id_esperado = 1L;
+        PagoImpuestoPredial pagoImpuestoPredial = new PagoImpuestoPredialTestDataBuilder()
+                .conValorPagado(VALOR_PAGADO)
+                .build();
+
+        RepositorioPagoImpuestoPredial repositorioPagoImpuestoPredial = Mockito.mock(RepositorioPagoImpuestoPredial.class);
+
+        ServicioPagarInmpuestoPredial servicioPagarInmpuestoPredial = new ServicioPagarInmpuestoPredial(repositorioPagoImpuestoPredial);
+
+        Mockito.when(
+                repositorioPagoImpuestoPredial.existe(
+                        pagoImpuestoPredial.getPropietario().getId(),
+                        pagoImpuestoPredial.getInmueble().getId(),
+                        pagoImpuestoPredial.getAnio())).thenReturn(true);
+
+        Mockito.when(repositorioPagoImpuestoPredial.crear(pagoImpuestoPredial)).thenReturn(id_esperado);
 
         // act - assert
         BasePrueba.assertThrows(
-                () -> pagoTestDataBuilder.build(),
-                ExcepcionValorObligatorio.class, SE_DEBE_INGRESAR_UN_INMUEBLE);
-    }
-
-    @Test
-    public void validarValorPagadoNuloTest() {
-        // arrange
-        PagoTestDataBuilder pagoTestDataBuilder = new PagoTestDataBuilder()
-                .conValorPagado(null);
-
-        // act - assert
-        BasePrueba.assertThrows(
-                () -> pagoTestDataBuilder.build(),
-                ExcepcionValorObligatorio.class, SE_DEBE_INGRESAR_UN_VALOR_PAGADO);
-    }
-
-
-    @Test
-    public void validarAnioPositivoTest() {
-        // arrange
-        PagoTestDataBuilder pagoTestDataBuilder = new PagoTestDataBuilder()
-                .conAnio(ANIO_INCORRECTO);
-
-        // act - assert
-        BasePrueba.assertThrows(
-                () -> pagoTestDataBuilder.build(),
-                ExcepcionValorInvalido.class, SE_DEBE_INGRESAR_UN_ANIO);
+                () -> servicioPagarInmpuestoPredial.ejecutar(pagoImpuestoPredial),
+                ExcepcionDuplicidad.class, EL_PAGO_YA_EXISTE_EN_EL_SISTEMA);
     }
 }

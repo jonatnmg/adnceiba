@@ -1,4 +1,4 @@
-package com.ceiba.pago.servicio.testdatabuilder;
+package com.ceiba.pago.testdatabuilder;
 
 import com.ceiba.inmueble.modelo.entidad.Inmueble;
 import com.ceiba.inmueble.testdatabuilder.InmuebleTestDataBuilder;
@@ -6,14 +6,15 @@ import com.ceiba.pago.modelo.entidad.PagoImpuestoPredial;
 import com.ceiba.propietario.modelo.entidad.Propietario;
 import com.ceiba.propietario.testdatabuilder.PropietarioTestDataBuilder;
 import com.ceiba.tarifa.modelo.entidad.Tarifa;
+import com.ceiba.tarifa.testdatabuilder.TarifaTestDataBuilder;
 
 import java.time.LocalDate;
 
-public class PagoTestDataBuilder {
+public class PagoImpuestoPredialTestDataBuilder {
 
     private static final int ANIO = 2021;
     private static final Long VALOR_PAGADO = 750000L;
-    private static final LocalDate FECHA_PAGO = LocalDate.now();
+    private static final LocalDate FECHA_PAGO = LocalDate.of(2021, 3, 10);
 
     private Long id;
     private Propietario propietario;
@@ -23,44 +24,46 @@ public class PagoTestDataBuilder {
     private Long valorPagado;
     private LocalDate fechaPago;
 
-    public PagoTestDataBuilder() {
+    public PagoImpuestoPredialTestDataBuilder() {
 
         Propietario propietario = new PropietarioTestDataBuilder().build();
         Inmueble inmueble = new InmuebleTestDataBuilder().build();
+        Tarifa tarifa = new TarifaTestDataBuilder().build();
 
         this.propietario = propietario;
         this.inmueble = inmueble;
         this.anio = ANIO;
         this.valorPagado = VALOR_PAGADO;
         this.fechaPago = FECHA_PAGO;
+        this.tarifa = tarifa;
     }
 
-    public PagoTestDataBuilder conPropietario(Propietario propietario) {
+    public PagoImpuestoPredialTestDataBuilder conPropietario(Propietario propietario) {
         this.propietario = propietario;
         return this;
     }
 
-    public PagoTestDataBuilder conInmueble(Inmueble idInmueble) {
+    public PagoImpuestoPredialTestDataBuilder conInmueble(Inmueble inmueble) {
         this.inmueble = inmueble;
         return this;
     }
 
-    public PagoTestDataBuilder conAnio(int anio) {
+    public PagoImpuestoPredialTestDataBuilder conAnio(int anio) {
         this.anio = anio;
         return this;
     }
 
-    public PagoTestDataBuilder conValorPagado(Long valorPagado) {
+    public PagoImpuestoPredialTestDataBuilder conValorPagado(Long valorPagado) {
         this.valorPagado = valorPagado;
         return this;
     }
 
-    public PagoTestDataBuilder conFechaPago(LocalDate fechaPago) {
+    public PagoImpuestoPredialTestDataBuilder conFechaPago(LocalDate fechaPago) {
         this.fechaPago = fechaPago;
         return this;
     }
 
-    public PagoTestDataBuilder conTarifa(Tarifa tarifa) {
+    public PagoImpuestoPredialTestDataBuilder conTarifa(Tarifa tarifa) {
         this.tarifa = tarifa;
         return this;
     }

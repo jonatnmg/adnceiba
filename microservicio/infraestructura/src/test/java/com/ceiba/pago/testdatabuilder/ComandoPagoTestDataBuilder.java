@@ -1,4 +1,4 @@
-package com.ceiba.pago.servicio.testdatabuilder;
+package com.ceiba.pago.testdatabuilder;
 
 import com.ceiba.pago.comando.ComandoPagoImpuestoPredial;
 

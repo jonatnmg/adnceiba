@@ -2,7 +2,7 @@ package com.ceiba.pago.controlador;
 
 import com.ceiba.ApplicationMock;
 import com.ceiba.pago.comando.ComandoPagoImpuestoPredial;
-import com.ceiba.pago.servicio.testdatabuilder.ComandoPagoTestDataBuilder;
+import com.ceiba.pago.testdatabuilder.ComandoPagoTestDataBuilder;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
