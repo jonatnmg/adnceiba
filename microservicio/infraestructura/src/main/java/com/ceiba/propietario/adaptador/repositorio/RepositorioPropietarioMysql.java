@@ -34,6 +34,9 @@ public class RepositorioPropietarioMysql implements RepositorioPropietario {
     @SqlStatement(namespace = "propietario", value = "buscarPropietarioPorId")
     private static String sqlBuscarPropietarioPorId;
 
+    @SqlStatement(namespace = "propietario", value = "existePorId")
+    private static String sqlExistePorId;
+
     public RepositorioPropietarioMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
     }
@@ -92,5 +95,13 @@ public class RepositorioPropietarioMysql implements RepositorioPropietario {
             return null;
         }
 
+    }
+
+    @Override
+    public boolean existePorId(Long idPropietario) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("id", idPropietario);
+
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorId, paramSource, Boolean.class);
     }
 }

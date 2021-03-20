@@ -1,7 +1,7 @@
 package com.ceiba.inmueble.servicio;
 
-import com.ceiba.dominio.excepcion.ExcepcionCrearPago;
 import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
+import com.ceiba.dominio.excepcion.ExcepcionSinDatos;
 import com.ceiba.inmueble.modelo.entidad.Inmueble;
 import com.ceiba.inmueble.puerto.repositorio.RepositorioInmueble;
 
@@ -17,8 +17,8 @@ public class ServicioActualizarInmueble {
     }
 
     public void ejecutar(Inmueble inmueble) {
-        this.validarExistenciaPrevia(inmueble);
         this.validarExisteInmueblePorId(inmueble);
+        this.validarExistenciaPrevia(inmueble);
         this.repositorioInmueble.actualizar(inmueble);
     }
 
@@ -32,7 +32,7 @@ public class ServicioActualizarInmueble {
     private void validarExisteInmueblePorId(Inmueble inmueble) {
         boolean existe = this.repositorioInmueble.existePorId(inmueble.getId());
         if (!existe) {
-            throw new ExcepcionCrearPago(EL_INMUEBLE_NO_SE_ENCONTRO_EN_EL_SISTEMA);
+            throw new ExcepcionSinDatos(EL_INMUEBLE_NO_SE_ENCONTRO_EN_EL_SISTEMA);
         }
     }
 }

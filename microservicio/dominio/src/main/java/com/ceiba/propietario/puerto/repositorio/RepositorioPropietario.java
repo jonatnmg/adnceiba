@@ -58,4 +58,11 @@ public interface RepositorioPropietario {
      */
     Propietario buscarPropietarioPorId(Long idPropietario);
 
+    /**
+     * Permite validar si existe propietario por id
+     *
+     * @param idPropietario
+     * @return si existe o no
+     */
+    boolean existePorId(Long idPropietario);
 }
