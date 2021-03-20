@@ -28,6 +28,9 @@ public class RepositorioPagoImpuestoPredialMysql implements RepositorioPagoImpue
     @SqlStatement(namespace = "pago", value = "existeExcluyendoId")
     private static String sqlExisteExcluyendoId;
 
+    @SqlStatement(namespace = "pago", value = "existePorId")
+    private static String sqlExistePorId;
+
     public RepositorioPagoImpuestoPredialMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
     }
@@ -86,5 +89,13 @@ public class RepositorioPagoImpuestoPredialMysql implements RepositorioPagoImpue
 
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteExcluyendoId, paramSource, Boolean.class);
 
+    }
+
+    @Override
+    public boolean existePorId(Long idPagoImpuestoPredial) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("id", idPagoImpuestoPredial);
+
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorId, paramSource, Boolean.class);
     }
 }

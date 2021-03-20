@@ -44,4 +44,12 @@ public interface RepositorioPagoImpuestoPredial {
      * @return si existe o no
      */
     boolean existeExcluyendoId(Long id, Long idPropietario, Long idInmueble, int anio);
+
+    /**
+     * Permite validar si existe un pago impuesto predial por id
+     *
+     * @param idPagoImpuestoPredial
+     * @return
+     */
+    boolean existePorId(Long idPagoImpuestoPredial);
 }
