@@ -22,6 +22,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest(ComandoControladorInmueble.class)
 public class ComandoControladorInmuebleTest {
 
+    private static final Long NUMERO_PREDIAL = 14796334L;
+    private static final String DIRECCION = "Av. Ferrocarril 52 No. 27 - 50";
+
     @Autowired
     private ObjectMapper objectMapper;
 
@@ -31,7 +34,10 @@ public class ComandoControladorInmuebleTest {
     @Test
     public void crear() throws Exception {
         // arrange
-        ComandoInmueble comandoInmueble = new ComandoInmuebleTestDataBuilder().build();
+        ComandoInmueble comandoInmueble = new ComandoInmuebleTestDataBuilder()
+                .conNumeroPredial(NUMERO_PREDIAL)
+                .conDireccion(DIRECCION)
+                .build();
 
         // act - assert
         mockMvc.perform(post("/inmuebles")
@@ -44,7 +50,7 @@ public class ComandoControladorInmuebleTest {
     @Test
     public void actualizar() throws Exception {
         // arrange
-        Long id = 2L;
+        Long id = 1L;
 
         ComandoInmueble comandoInmueble = new ComandoInmuebleTestDataBuilder().build();
 
@@ -58,7 +64,7 @@ public class ComandoControladorInmuebleTest {
     @Test
     public void eliminar() throws Exception {
         // arrange
-        long id = 2L;
+        long id = 1L;
 
         // act - assert
         mockMvc.perform(delete("/inmuebles/{id}", id)
