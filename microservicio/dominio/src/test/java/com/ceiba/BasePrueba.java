@@ -33,6 +33,10 @@ public class BasePrueba {
         }
     }
 
+    public static void assertEqualsObject(Object expected, Object customObject) {
+        Assert.assertEquals(expected, customObject);
+    }
+
     @FunctionalInterface
     public interface Thunk {
         void execute();
