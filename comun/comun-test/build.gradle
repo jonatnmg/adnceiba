@@ -4,11 +4,11 @@ apply plugin: 'eclipse'
 sourceCompatibility = '8'
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
-	implementation project.ext.h2
-	implementation project.ext.mockito
-	implementation project.ext.junit
+    implementation project.ext.h2
+    implementation project.ext.mockito
+    implementation project.ext.junit
 }

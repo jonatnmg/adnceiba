@@ -4,5 +4,5 @@ apply plugin: 'eclipse'
 sourceCompatibility = '8'
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }

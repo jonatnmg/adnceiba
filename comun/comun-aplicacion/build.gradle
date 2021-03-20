@@ -6,9 +6,9 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '8'
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
-	compile project.ext.springtxt
+    compile project.ext.springtxt
 }
