@@ -52,4 +52,12 @@ public interface RepositorioTarifa {
      */
     Tarifa buscarTarifaPorId(Long id);
 
+    /**
+     * Permite validar si existe una tarifa por id
+     *
+     * @param idTarifa
+     * @return si existe o no
+     */
+    boolean existePorId(Long idTarifa);
+
 }

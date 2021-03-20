@@ -26,7 +26,6 @@ public class ServicioActualizarPropietarioTest {
 
         Mockito.when(repositorioPropietario.existeExcluyendoId(propietario.getId(), propietario.getNumeroIdentificacion())).thenReturn(false);
         Mockito.when(repositorioPropietario.existePorId(propietario.getId())).thenReturn(true);
-        Mockito.when(repositorioPropietario.crear(propietario)).thenReturn(id_esperado);
 
         // act
         servicioActualizarPropietario.ejecutar(propietario);

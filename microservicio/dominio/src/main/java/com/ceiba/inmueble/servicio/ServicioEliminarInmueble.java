@@ -1,6 +1,6 @@
 package com.ceiba.inmueble.servicio;
 
-import com.ceiba.dominio.excepcion.ExcepcionCrearPago;
+import com.ceiba.dominio.excepcion.ExcepcionSinDatos;
 import com.ceiba.inmueble.puerto.repositorio.RepositorioInmueble;
 
 public class ServicioEliminarInmueble {
@@ -21,7 +21,7 @@ public class ServicioEliminarInmueble {
     private void validarExisteInmueblePorId(Long idInmueble) {
         boolean existe = this.repositorioInmueble.existePorId(idInmueble);
         if (!existe) {
-            throw new ExcepcionCrearPago(EL_INMUEBLE_NO_SE_ENCONTRO_EN_EL_SISTEMA);
+            throw new ExcepcionSinDatos(EL_INMUEBLE_NO_SE_ENCONTRO_EN_EL_SISTEMA);
         }
     }
 }

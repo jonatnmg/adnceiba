@@ -35,6 +35,9 @@ public class RepositorioTarifaMysql implements RepositorioTarifa {
     @SqlStatement(namespace = "tarifa", value = "buscarTarifaPorId")
     private static String sqlBuscarTarifaPorId;
 
+    @SqlStatement(namespace = "tarifa", value = "existePorId")
+    private static String sqlExistePorId;
+
     @Override
     public Long crear(Tarifa tarifa) {
         return this.customNamedParameterJdbcTemplate.crear(tarifa, sqlCrear);
@@ -84,5 +87,13 @@ public class RepositorioTarifaMysql implements RepositorioTarifa {
         } catch (EmptyResultDataAccessException emptyResultDataAccessException) {
             return null;
         }
+    }
+
+    @Override
+    public boolean existePorId(Long idTarifa) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("id", idTarifa);
+
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorId, paramSource, Boolean.class);
     }
 }

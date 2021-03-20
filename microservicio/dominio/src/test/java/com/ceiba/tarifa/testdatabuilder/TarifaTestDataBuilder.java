@@ -43,7 +43,7 @@ public class TarifaTestDataBuilder {
         return this;
     }
 
-    public TarifaTestDataBuilder conAnio(int anio) {
+    public TarifaTestDataBuilder conAnio(Integer anio) {
         this.anio = anio;
         return this;
     }
