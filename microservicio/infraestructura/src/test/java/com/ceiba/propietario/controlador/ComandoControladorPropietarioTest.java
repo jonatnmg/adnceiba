@@ -14,13 +14,14 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = ApplicationMock.class)
 @WebMvcTest(ComandoControladorPropietario.class)
 public class ComandoControladorPropietarioTest {
+
+    private static final String NUMERO_IDENTIFICACION = "15930347";
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -31,14 +32,15 @@ public class ComandoControladorPropietarioTest {
     @Test
     public void crear() throws Exception {
         // arrange
-        ComandoPropietario propietario = new ComandoPropietarioTestDataBuilder().build();
+        ComandoPropietario propietario = new ComandoPropietarioTestDataBuilder()
+                .conNumeroIdentificacion(NUMERO_IDENTIFICACION)
+                .build();
 
         // act - assert
         mocMvc.perform(post("/propietarios")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(propietario)))
-                .andExpect(status().isOk())
-                .andExpect(content().json("{'valor': 2}"));
+                .andExpect(status().isOk());
     }
 
     @Test
@@ -57,7 +59,7 @@ public class ComandoControladorPropietarioTest {
     @Test
     public void eliminar() throws Exception {
         // arrange
-        Long id = 1L;
+        Long id = 3L;
 
         // act - assert
         mocMvc.perform(delete("/propietarios/{id}", id)

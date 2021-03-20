@@ -17,7 +17,7 @@ public class ComandoInmuebleTestDataBuilder {
     private int areaTotal;
     private int areaConstruida;
     private long avaluoCatastral;
-    private int idPropietario;
+    private long idPropietario;
 
     public ComandoInmuebleTestDataBuilder() {
         this.numeroPredial = NUMERO_PREDIAL;
@@ -54,7 +54,7 @@ public class ComandoInmuebleTestDataBuilder {
         return this;
     }
 
-    public ComandoInmuebleTestDataBuilder conIdPropietario(int idPropietario) {
+    public ComandoInmuebleTestDataBuilder conIdPropietario(long idPropietario) {
         this.idPropietario = idPropietario;
         return this;
     }

@@ -10,8 +10,8 @@ public class ComandoPagoTestDataBuilder {
     private static final Long ID_INMUEBLE = 1L;
     private static final int ANIO = 2021;
     private static final long ID_TARIFA = 1L;
-    private static final Long VALOR_PAGADO = 704477l;
-    private static final LocalDate FECHA_PAGO = LocalDate.of(2021, 3, 10);
+    private static final Long VALOR_PAGADO = 782753l;
+    private static final LocalDate FECHA_PAGO = LocalDate.of(2021, 5, 12);
 
     private Long id;
     private Long idPropietario;
@@ -35,8 +35,18 @@ public class ComandoPagoTestDataBuilder {
         return this;
     }
 
+    public ComandoPagoTestDataBuilder conIdPropietario(Long idPropietario) {
+        this.idPropietario = idPropietario;
+        return this;
+    }
+
     public ComandoPagoTestDataBuilder conIdInmueble(Long idInmueble) {
-        this.id = idInmueble;
+        this.idInmueble = idInmueble;
+        return this;
+    }
+
+    public ComandoPagoTestDataBuilder conIdTarifa(Long idTarifa) {
+        this.idTarifa = idTarifa;
         return this;
     }
 

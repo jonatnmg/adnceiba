@@ -21,9 +21,16 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest(ComandoControladorPago.class)
 public class ComandoControladorPagoImpuestoPredialTest {
 
-    private static final Long ID_INMUEBLE = 2L;
+    private static final Long ID_INMUEBLE = 3L;
     private static final int ANIO_PAGO = 2020;
-    private static final Long VALOR_PAGADO = 861028L;
+    private static final Long VALOR_PAGADO_CREAR = 991237L;
+
+    private static final Long ID_PROPIETARIO_ACTUALIZAR = 1L;
+    private static final Long ID_INMUEBLE_ACTUALIZAR = 1L;
+    private static final Long ID_PAGO_IMPUESTO_PREDIAL = 1L;
+    private static final long ID_TARIFA_ACTUALIZAR = 1L;
+    private static final long VALOR_PAGAR_ACTUALIZAR = 782753L;
+
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -37,7 +44,7 @@ public class ComandoControladorPagoImpuestoPredialTest {
         ComandoPagoImpuestoPredial comandoPagoImpuestoPredial = new ComandoPagoTestDataBuilder()
                 .conIdInmueble(ID_INMUEBLE)
                 .conAnio(ANIO_PAGO)
-                .conValorPagado(VALOR_PAGADO)
+                .conValorPagado(VALOR_PAGADO_CREAR)
                 .build();
 
         // act - assert
@@ -50,12 +57,16 @@ public class ComandoControladorPagoImpuestoPredialTest {
     @Test
     public void actualizar() throws Exception {
         // arrange
-        Long id = 1L;
 
-        ComandoPagoImpuestoPredial comandoPagoImpuestoPredial = new ComandoPagoTestDataBuilder().build();
+        ComandoPagoImpuestoPredial comandoPagoImpuestoPredial = new ComandoPagoTestDataBuilder()
+                .conIdInmueble(ID_INMUEBLE_ACTUALIZAR)
+                .conIdPropietario(ID_PROPIETARIO_ACTUALIZAR)
+                .conIdTarifa(ID_TARIFA_ACTUALIZAR)
+                .conValorPagado(VALOR_PAGAR_ACTUALIZAR)
+                .build();
 
         // act - assert
-        mockMvc.perform(put("/pagos/{id}", id)
+        mockMvc.perform(put("/pagos/{id}", ID_PAGO_IMPUESTO_PREDIAL)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(comandoPagoImpuestoPredial)))
                 .andExpect(status().isOk());

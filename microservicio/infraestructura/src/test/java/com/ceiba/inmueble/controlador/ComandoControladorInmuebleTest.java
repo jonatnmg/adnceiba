@@ -14,7 +14,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
@@ -24,6 +23,13 @@ public class ComandoControladorInmuebleTest {
 
     private static final Long NUMERO_PREDIAL = 14796334L;
     private static final String DIRECCION = "Av. Ferrocarril 52 No. 27 - 50";
+
+    private static final Long NUMERO_PREDIAL_ACTUALIZAR = 14563687L;
+    private static final String DIRECCION_ACTUALIZAR = "Calle 50 No. 19-5 Br. Los Andres";
+    private static final int AREA_TOTAL_ACTUALIZAR = 132;
+    private static final int AREA_CONSTRUIDA_ACTUALIZAR = 125;
+    private static final Long AVALUO_CATASTRAL_ACTUALIZAR = 137325001l;
+    private static final Long ID_PROPIETARIO_ACTUALIZAR = 1L;
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -43,8 +49,7 @@ public class ComandoControladorInmuebleTest {
         mockMvc.perform(post("/inmuebles")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(comandoInmueble)))
-                .andExpect(status().isOk())
-                .andExpect(content().json("{'valor': 3}"));
+                .andExpect(status().isOk());
     }
 
     @Test
@@ -52,7 +57,14 @@ public class ComandoControladorInmuebleTest {
         // arrange
         Long id = 1L;
 
-        ComandoInmueble comandoInmueble = new ComandoInmuebleTestDataBuilder().build();
+        ComandoInmueble comandoInmueble = new ComandoInmuebleTestDataBuilder()
+                .conAvaluoCatastral(AVALUO_CATASTRAL_ACTUALIZAR)
+                .conDireccion(DIRECCION_ACTUALIZAR)
+                .conNumeroPredial(NUMERO_PREDIAL_ACTUALIZAR)
+                .conAreaConstruida(AREA_CONSTRUIDA_ACTUALIZAR)
+                .conAreaTotal(AREA_TOTAL_ACTUALIZAR)
+                .conIdPropietario(ID_PROPIETARIO_ACTUALIZAR)
+                .build();
 
         // act - assert
         mockMvc.perform(put("/inmuebles/{id}", id)
@@ -64,7 +76,7 @@ public class ComandoControladorInmuebleTest {
     @Test
     public void eliminar() throws Exception {
         // arrange
-        long id = 1L;
+        long id = 2L;
 
         // act - assert
         mockMvc.perform(delete("/inmuebles/{id}", id)

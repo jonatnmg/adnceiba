@@ -4,8 +4,8 @@ import com.ceiba.tarifa.comando.ComandoTarifa;
 
 public class ComandoTarifaTestDataBuilder {
 
-    private static final Long AVALUO_MINIMO = 0L;
-    private static final Long AVALUO_MAXIMO = 128000000L;
+    private static final Long AVALUO_MINIMO = 158092001l;
+    private static final Long AVALUO_MAXIMO = 168092000L;
     private static final double VALOR_TARIFA = 5.5;
     private static final int ANIO_TARIFA = 2021;
 

@@ -26,7 +26,6 @@ public class Tarifa {
     private int anio;
 
     public Tarifa(Long id, Long avaluoMinimo, Long avaluoMaximo, double valor, int anio) {
-
         ValidadorArgumento.validarObligatorio(avaluoMinimo, SE_DEBE_INGRESAR_AVALUO_MINIMO);
         ValidadorArgumento.validarObligatorio(avaluoMaximo, SE_DEBE_INGRESAR_AVALUO_MAXIMO);
         ValidadorArgumento.validarObligatorio(valor, SE_DEBE_INGRESAR_UNA_TARIFA);
