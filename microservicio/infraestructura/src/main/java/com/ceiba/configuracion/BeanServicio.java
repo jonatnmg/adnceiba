@@ -67,8 +67,8 @@ public class BeanServicio {
     }
 
     @Bean
-    public ServicioEliminarTarifa servicioEliminarTarifa(RepositorioTarifa repositorioTarifa) {
-        return new ServicioEliminarTarifa(repositorioTarifa);
+    public ServicioEliminarTarifa servicioEliminarTarifa(RepositorioTarifa repositorioTarifa, RepositorioPagoImpuestoPredial repositorioPagoImpuestoPredial) {
+        return new ServicioEliminarTarifa(repositorioTarifa, repositorioPagoImpuestoPredial);
     }
 
     @Bean
