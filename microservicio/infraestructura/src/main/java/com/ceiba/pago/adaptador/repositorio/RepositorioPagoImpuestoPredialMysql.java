@@ -34,6 +34,9 @@ public class RepositorioPagoImpuestoPredialMysql implements RepositorioPagoImpue
     @SqlStatement(namespace = "pago", value = "existePropietarioEnPagoImpuestoPredial")
     private static String sqlExistePropietarioEnPagoImpuestoPredial;
 
+    @SqlStatement(namespace = "pago", value = "existeInmuebleEnPagoImpuestoPredial")
+    private static String sqlExisteInmuebleEnPagoImpuestoPredial;
+
     public RepositorioPagoImpuestoPredialMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
     }
@@ -109,4 +112,13 @@ public class RepositorioPagoImpuestoPredialMysql implements RepositorioPagoImpue
 
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePropietarioEnPagoImpuestoPredial, paramSource, Boolean.class);
     }
+
+    @Override
+    public boolean existeInmuebleEnPagoImpuestoPredial(Long idInmueble) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("idInmueble", idInmueble);
+
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteInmuebleEnPagoImpuestoPredial, paramSource, Boolean.class);
+    }
+
 }

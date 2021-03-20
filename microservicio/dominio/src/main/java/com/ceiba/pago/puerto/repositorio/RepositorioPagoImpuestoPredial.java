@@ -61,4 +61,12 @@ public interface RepositorioPagoImpuestoPredial {
      */
 
     boolean existePropietarioEnPagoImpuestoPredial(Long idPropietario);
+
+    /**
+     * Verificar si id Inmueble esta relacionado a un pago
+     *
+     * @param idInmueble
+     * @return
+     */
+    boolean existeInmuebleEnPagoImpuestoPredial(Long idInmueble);
 }

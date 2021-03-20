@@ -5,6 +5,7 @@ import com.ceiba.dominio.excepcion.ExcepcionSinDatos;
 import com.ceiba.inmueble.modelo.entidad.Inmueble;
 import com.ceiba.inmueble.puerto.repositorio.RepositorioInmueble;
 import com.ceiba.inmueble.testdatabuilder.InmuebleTestDataBuilder;
+import com.ceiba.pago.puerto.repositorio.RepositorioPagoImpuestoPredial;
 import org.junit.Test;
 import org.mockito.Mockito;
 
@@ -18,9 +19,11 @@ public class ServicioEliminarInmuebleTest {
         // arrange
         Inmueble inmueble = new InmuebleTestDataBuilder().build();
         RepositorioInmueble repositorioInmueble = Mockito.mock(RepositorioInmueble.class);
+        RepositorioPagoImpuestoPredial repositorioPagoImpuestoPredial = Mockito.mock(RepositorioPagoImpuestoPredial.class);
 
-        ServicioEliminarInmueble servicioEliminarInmueble = new ServicioEliminarInmueble(repositorioInmueble);
+        ServicioEliminarInmueble servicioEliminarInmueble = new ServicioEliminarInmueble(repositorioInmueble, repositorioPagoImpuestoPredial);
         Mockito.when(repositorioInmueble.existePorId(inmueble.getId())).thenReturn(true);
+        Mockito.when(repositorioInmueble.existePropietarioEnInmueble(inmueble.getId())).thenReturn(false);
 
         // act
         servicioEliminarInmueble.ejecutar(inmueble.getId());

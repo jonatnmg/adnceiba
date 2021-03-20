@@ -82,8 +82,8 @@ public class BeanServicio {
     }
 
     @Bean
-    public ServicioEliminarInmueble servicioEliminarInmueble(RepositorioInmueble repositorioInmueble) {
-        return new ServicioEliminarInmueble(repositorioInmueble);
+    public ServicioEliminarInmueble servicioEliminarInmueble(RepositorioInmueble repositorioInmueble, RepositorioPagoImpuestoPredial repositorioPagoImpuestoPredial) {
+        return new ServicioEliminarInmueble(repositorioInmueble, repositorioPagoImpuestoPredial);
     }
 
     @Bean

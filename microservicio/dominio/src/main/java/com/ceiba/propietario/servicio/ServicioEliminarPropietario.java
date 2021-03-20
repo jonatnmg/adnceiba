@@ -24,14 +24,14 @@ public class ServicioEliminarPropietario {
     }
 
     public void ejecutar(Long id) {
-        this.validarExistenciaPropietarioPorId(id);
-        this.validarExistenciaPropietarioEnInmueble(id);
-        this.validarExistenciaPropietarioEnPagoImpuestoPredial(id);
+        this.validarExistePropietarioPorId(id);
+        this.validarExistePropietarioEnInmueble(id);
+        this.validarExistePropietarioEnPagoImpuestoPredial(id);
 
         this.repositorioPropietario.eliminar(id);
     }
 
-    private void validarExistenciaPropietarioPorId(Long id) {
+    private void validarExistePropietarioPorId(Long id) {
         boolean existe = this.repositorioPropietario.existePorId(id);
 
         if (!existe) {
@@ -39,7 +39,7 @@ public class ServicioEliminarPropietario {
         }
     }
 
-    private void validarExistenciaPropietarioEnInmueble(Long id) {
+    private void validarExistePropietarioEnInmueble(Long id) {
         boolean existe = this.repositorioInmueble.existePropietarioEnInmueble(id);
 
         if (existe) {
@@ -47,7 +47,7 @@ public class ServicioEliminarPropietario {
         }
     }
 
-    private void validarExistenciaPropietarioEnPagoImpuestoPredial(Long id) {
+    private void validarExistePropietarioEnPagoImpuestoPredial(Long id) {
         boolean existe = this.repositorioPagoImpuestoPredial.existePropietarioEnPagoImpuestoPredial(id);
 
         if (existe) {
