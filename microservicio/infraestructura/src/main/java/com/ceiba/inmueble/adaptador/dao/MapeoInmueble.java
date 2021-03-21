@@ -20,14 +20,14 @@ public class MapeoInmueble implements RowMapper<DtoInmueble>, MapperResult {
         int areaConstruida = rs.getInt("area_construida");
         Long avaluoCatrastral = rs.getLong("avaluo_catastral");
 
-        Long idPropietario = rs.getLong("id_propietario");
-        String nombre = rs.getString("nombre");
-        String numeroIdentificacion = rs.getString("numero_identificacion");
-        String telefono = rs.getString("telefono");
-        String correo = rs.getString("correo");
-        String direccionPropietario = rs.getString("direccion_propietario");
+        Long id_propietario = rs.getLong("id_propietario");
+        String nombre_propietario = rs.getString("nombre");
+        String numero_identificacion = rs.getString("numero_identificacion");
+        String telefono_propietario = rs.getString("telefono");
+        String correo_propietario = rs.getString("correo");
+        String direccion_propietario = rs.getString("direccion_propietario");
 
-        DtoPropietario propietario = new DtoPropietario(idPropietario, nombre, numeroIdentificacion, telefono, correo, direccionPropietario);
+        DtoPropietario propietario = new DtoPropietario(id_propietario, nombre_propietario, numero_identificacion, telefono_propietario, correo_propietario, direccion_propietario);
 
         return new DtoInmueble(id, numeroPredial, direccion, areaTotal, areaConstruida, avaluoCatrastral, propietario);
     }
