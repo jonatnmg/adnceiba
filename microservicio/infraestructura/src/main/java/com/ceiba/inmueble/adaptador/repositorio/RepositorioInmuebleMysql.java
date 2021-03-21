@@ -102,7 +102,6 @@ public class RepositorioInmuebleMysql implements RepositorioInmueble {
         try {
             return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlBuscarInmueblePorId, paramSource, new MapeoEntidadInmueble());
         } catch (EmptyResultDataAccessException emptyResultDataAccessException) {
-            emptyResultDataAccessException.printStackTrace();
             return null;
         }
     }

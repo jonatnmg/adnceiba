@@ -92,7 +92,6 @@ public class RepositorioPropietarioMysql implements RepositorioPropietario {
         try {
             return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlBuscarPropietarioPorId, paramSource, new MapeoEntidadPropietario());
         } catch (EmptyResultDataAccessException emptyResultDataAccessException) {
-            emptyResultDataAccessException.printStackTrace();
             return null;
         }
 
