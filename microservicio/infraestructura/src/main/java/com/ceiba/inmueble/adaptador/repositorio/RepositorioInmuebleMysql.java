@@ -43,7 +43,7 @@ public class RepositorioInmuebleMysql implements RepositorioInmueble {
     }
 
     private SqlParameterSource obtenerParametrosInmueble(Inmueble inmueble) {
-        SqlParameterSource paramSource = new MapSqlParameterSource()
+        return new MapSqlParameterSource()
                 .addValue("id", inmueble.getId())
                 .addValue("numeroPredial", inmueble.getNumeroPredial())
                 .addValue("direccion", inmueble.getDireccion())
@@ -52,7 +52,6 @@ public class RepositorioInmuebleMysql implements RepositorioInmueble {
                 .addValue("avaluoCatastral", inmueble.getAvaluoCatastral())
                 .addValue("idPropietario", inmueble.getPropietario().getId());
 
-        return paramSource;
     }
 
     @Override

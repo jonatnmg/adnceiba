@@ -45,7 +45,7 @@ public class RepositorioPagoImpuestoPredialMysql implements RepositorioPagoImpue
     }
 
     private SqlParameterSource obtenerParametrosPagarImpuestoPredial(PagoImpuestoPredial pagoImpuestoPredial) {
-        SqlParameterSource paramSource = new MapSqlParameterSource()
+        return new MapSqlParameterSource()
                 .addValue("id", pagoImpuestoPredial.getId())
                 .addValue("idPropietario", pagoImpuestoPredial.getPropietario().getId())
                 .addValue("idInmueble", pagoImpuestoPredial.getInmueble().getId())
@@ -53,8 +53,6 @@ public class RepositorioPagoImpuestoPredialMysql implements RepositorioPagoImpue
                 .addValue("anio", pagoImpuestoPredial.getAnio())
                 .addValue("idTarifa", pagoImpuestoPredial.getTarifa().getId())
                 .addValue("valorPagado", pagoImpuestoPredial.getValorPagado());
-
-        return paramSource;
     }
 
     @Override
