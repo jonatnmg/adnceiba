@@ -18,34 +18,34 @@ public class RepositorioTarifaMysql implements RepositorioTarifa {
     }
 
     @SqlStatement(namespace = "tarifa", value = "crear")
-    private static String sqlCrear;
+    private static String sqlCrearTarifa;
 
     @SqlStatement(namespace = "tarifa", value = "actualizar")
-    private static String sqlActualizar;
+    private static String sqlActualizarTarifa;
 
     @SqlStatement(namespace = "tarifa", value = "eliminar")
-    private static String sqlEliminar;
+    private static String sqlEliminarTarifa;
 
     @SqlStatement(namespace = "tarifa", value = "existe")
-    private static String sqlExiste;
+    private static String sqlExisteTarifa;
 
     @SqlStatement(namespace = "tarifa", value = "existeExcluyendoId")
-    private static String sqlExisteExcluyendoId;
+    private static String sqlExisteTarifaExcluyendoId;
 
     @SqlStatement(namespace = "tarifa", value = "buscarTarifaPorId")
     private static String sqlBuscarTarifaPorId;
 
     @SqlStatement(namespace = "tarifa", value = "existePorId")
-    private static String sqlExistePorId;
+    private static String sqlExisteTarifaPorId;
 
     @Override
     public Long crear(Tarifa tarifa) {
-        return this.customNamedParameterJdbcTemplate.crear(tarifa, sqlCrear);
+        return this.customNamedParameterJdbcTemplate.crear(tarifa, sqlCrearTarifa);
     }
 
     @Override
     public void actualizar(Tarifa tarifa) {
-        this.customNamedParameterJdbcTemplate.actualizar(tarifa, sqlActualizar);
+        this.customNamedParameterJdbcTemplate.actualizar(tarifa, sqlActualizarTarifa);
     }
 
     @Override
@@ -53,7 +53,7 @@ public class RepositorioTarifaMysql implements RepositorioTarifa {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("id", id);
 
-        this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlEliminar, paramSource);
+        this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlEliminarTarifa, paramSource);
     }
 
     @Override
@@ -63,7 +63,7 @@ public class RepositorioTarifaMysql implements RepositorioTarifa {
         paramSource.addValue("avaluoMaximo", avaluoMaximo);
         paramSource.addValue("anio", anio);
 
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExiste, paramSource, Boolean.class);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteTarifa, paramSource, Boolean.class);
     }
 
     @Override
@@ -74,7 +74,7 @@ public class RepositorioTarifaMysql implements RepositorioTarifa {
         paramSource.addValue("avaluoMaximo", avaluoMaximo);
         paramSource.addValue("anio", anio);
 
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteExcluyendoId, paramSource, Boolean.class);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteTarifaExcluyendoId, paramSource, Boolean.class);
     }
 
     @Override
@@ -94,6 +94,6 @@ public class RepositorioTarifaMysql implements RepositorioTarifa {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("id", idTarifa);
 
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorId, paramSource, Boolean.class);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteTarifaPorId, paramSource, Boolean.class);
     }
 }
