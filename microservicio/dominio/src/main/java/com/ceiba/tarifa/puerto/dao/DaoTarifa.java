@@ -13,14 +13,4 @@ public interface DaoTarifa {
      */
     List<DtoTarifa> listar();
 
-    /**
-     * obtener tarifa por avaluo catastral y año
-     *
-     * @param avaluoCatastral
-     * @param anio
-     * @return
-     */
-
-    double obtenerTarifaPorAvaluoYAnio(Long avaluoCatastral, int anio);
-
 }
