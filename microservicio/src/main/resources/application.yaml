@@ -5,6 +5,7 @@ jasypt:
 
 server:
   port: 8084
+  allowedOrigins: http://localhost:4200
   servlet:
     context-path: /predial
     session:
