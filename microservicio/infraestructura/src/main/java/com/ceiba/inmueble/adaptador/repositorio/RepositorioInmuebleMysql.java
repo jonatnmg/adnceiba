@@ -51,7 +51,6 @@ public class RepositorioInmuebleMysql implements RepositorioInmueble {
                 .addValue("areaConstruida", inmueble.getAreaConstruida())
                 .addValue("avaluoCatastral", inmueble.getAvaluoCatastral())
                 .addValue("idPropietario", inmueble.getPropietario().getId());
-
     }
 
     @Override
