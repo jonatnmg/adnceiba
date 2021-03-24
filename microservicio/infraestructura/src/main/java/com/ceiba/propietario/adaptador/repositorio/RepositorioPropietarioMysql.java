@@ -2,16 +2,22 @@ package com.ceiba.propietario.adaptador.repositorio;
 
 import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
 import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
+import com.ceiba.inmueble.adaptador.repositorio.RepositorioInmuebleMysql;
 import com.ceiba.propietario.modelo.entidad.Propietario;
 import com.ceiba.propietario.puerto.repositorio.RepositorioPropietario;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Repository;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 @Repository
 public class RepositorioPropietarioMysql implements RepositorioPropietario {
 
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
+    private static final Logger LOGGER = Logger.getLogger(RepositorioInmuebleMysql.class.getName());
+    private static final String REGISTRO_NO_ENCONTRADO = "Registro no encontrado.";
 
     @SqlStatement(namespace = "propietario", value = "crear")
     private static String sqlCrear;
@@ -92,6 +98,7 @@ public class RepositorioPropietarioMysql implements RepositorioPropietario {
         try {
             return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlBuscarPropietarioPorId, paramSource, new MapeoEntidadPropietario());
         } catch (EmptyResultDataAccessException emptyResultDataAccessException) {
+            LOGGER.log(Level.FINE, REGISTRO_NO_ENCONTRADO, emptyResultDataAccessException);
             return null;
         }
 

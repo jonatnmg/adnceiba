@@ -2,16 +2,22 @@ package com.ceiba.tarifa.adaptador.repositorio;
 
 import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
 import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
+import com.ceiba.inmueble.adaptador.repositorio.RepositorioInmuebleMysql;
 import com.ceiba.tarifa.modelo.entidad.Tarifa;
 import com.ceiba.tarifa.puerto.repositorio.RepositorioTarifa;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Repository;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 @Repository
 public class RepositorioTarifaMysql implements RepositorioTarifa {
 
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
+    private static final Logger LOGGER = Logger.getLogger(RepositorioInmuebleMysql.class.getName());
+    private static final String REGISTRO_NO_ENCONTRADO = "Registro no encontrado.";
 
     public RepositorioTarifaMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
@@ -85,6 +91,7 @@ public class RepositorioTarifaMysql implements RepositorioTarifa {
         try {
             return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlBuscarTarifaPorId, paramSource, new MapeoEntidadTarifa());
         } catch (EmptyResultDataAccessException emptyResultDataAccessException) {
+            LOGGER.log(Level.FINE, REGISTRO_NO_ENCONTRADO, emptyResultDataAccessException);
             return null;
         }
     }

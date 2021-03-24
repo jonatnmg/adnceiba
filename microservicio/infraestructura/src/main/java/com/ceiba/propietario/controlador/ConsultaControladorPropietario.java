@@ -33,7 +33,7 @@ public class ConsultaControladorPropietario {
 
 
     @GetMapping(value = "/{numeroIdentificacion}")
-    @ApiOperation("Listar un propietario")
+    @ApiOperation("listar propietario por numero identificacion")
     public List<DtoPropietario> listarPorNumeroIdentificacion(@PathVariable String numeroIdentificacion) {
 
         return this.manejadorListarPropietariosPorNumeroIdentificacion.ejecutar(numeroIdentificacion);

@@ -9,10 +9,15 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 @Repository
 public class RepositorioInmuebleMysql implements RepositorioInmueble {
 
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
+    private static final Logger LOGGER = Logger.getLogger(RepositorioInmuebleMysql.class.getName());
+    private static final String REGISTRO_NO_ENCONTRADO = "Registro no encontrado.";
 
     @SqlStatement(namespace = "inmueble", value = "crear")
     private static String sqlCrear;
@@ -100,6 +105,7 @@ public class RepositorioInmuebleMysql implements RepositorioInmueble {
         try {
             return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlBuscarInmueblePorId, paramSource, new MapeoEntidadInmueble());
         } catch (EmptyResultDataAccessException emptyResultDataAccessException) {
+            LOGGER.log(Level.FINE, REGISTRO_NO_ENCONTRADO, emptyResultDataAccessException);
             return null;
         }
     }
