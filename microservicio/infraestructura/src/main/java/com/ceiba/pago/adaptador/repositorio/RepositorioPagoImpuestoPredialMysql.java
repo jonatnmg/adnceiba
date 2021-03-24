@@ -12,6 +12,8 @@ import org.springframework.stereotype.Repository;
 public class RepositorioPagoImpuestoPredialMysql implements RepositorioPagoImpuestoPredial {
 
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
+    private static final String TEXTO_ID_PROPIETARIO = "idPropietario";
+    private static final String TEXTO_ID_INMUEBLE = "idInmueble";
 
     @SqlStatement(namespace = "pago", value = "crear")
     private static String sqlCrear;
@@ -47,8 +49,8 @@ public class RepositorioPagoImpuestoPredialMysql implements RepositorioPagoImpue
     private SqlParameterSource obtenerParametrosPagarImpuestoPredial(PagoImpuestoPredial pagoImpuestoPredial) {
         return new MapSqlParameterSource()
                 .addValue("id", pagoImpuestoPredial.getId())
-                .addValue("idPropietario", pagoImpuestoPredial.getPropietario().getId())
-                .addValue("idInmueble", pagoImpuestoPredial.getInmueble().getId())
+                .addValue(TEXTO_ID_PROPIETARIO, pagoImpuestoPredial.getPropietario().getId())
+                .addValue(TEXTO_ID_INMUEBLE, pagoImpuestoPredial.getInmueble().getId())
                 .addValue("fechaPago", pagoImpuestoPredial.getFechaPago())
                 .addValue("anio", pagoImpuestoPredial.getAnio())
                 .addValue("idTarifa", pagoImpuestoPredial.getTarifa().getId())
@@ -79,8 +81,8 @@ public class RepositorioPagoImpuestoPredialMysql implements RepositorioPagoImpue
     @Override
     public boolean existe(Long idPropietario, Long idInmueble, int anio) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
-        paramSource.addValue("idPropietario", idPropietario);
-        paramSource.addValue("idInmueble", idInmueble);
+        paramSource.addValue(TEXTO_ID_PROPIETARIO, idPropietario);
+        paramSource.addValue(TEXTO_ID_INMUEBLE, idInmueble);
         paramSource.addValue("anio", anio);
 
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExiste, paramSource, Boolean.class);
@@ -90,8 +92,8 @@ public class RepositorioPagoImpuestoPredialMysql implements RepositorioPagoImpue
     public boolean existeExcluyendoId(Long id, Long idPropietario, Long idInmueble, int anio) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("id", id);
-        paramSource.addValue("idPropietario", idPropietario);
-        paramSource.addValue("idInmueble", idInmueble);
+        paramSource.addValue(TEXTO_ID_PROPIETARIO, idPropietario);
+        paramSource.addValue(TEXTO_ID_INMUEBLE, idInmueble);
         paramSource.addValue("anio", anio);
 
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteExcluyendoId, paramSource, Boolean.class);
@@ -109,7 +111,7 @@ public class RepositorioPagoImpuestoPredialMysql implements RepositorioPagoImpue
     @Override
     public boolean existePropietarioEnPagoImpuestoPredial(Long idPropietario) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
-        paramSource.addValue("idPropietario", idPropietario);
+        paramSource.addValue(TEXTO_ID_PROPIETARIO, idPropietario);
 
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePropietarioEnPagoImpuestoPredial, paramSource, Boolean.class);
     }
@@ -117,7 +119,7 @@ public class RepositorioPagoImpuestoPredialMysql implements RepositorioPagoImpue
     @Override
     public boolean existeInmuebleEnPagoImpuestoPredial(Long idInmueble) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
-        paramSource.addValue("idInmueble", idInmueble);
+        paramSource.addValue(TEXTO_ID_INMUEBLE, idInmueble);
 
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteInmuebleEnPagoImpuestoPredial, paramSource, Boolean.class);
     }
