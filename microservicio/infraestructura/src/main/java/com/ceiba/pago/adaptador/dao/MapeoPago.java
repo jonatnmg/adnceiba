@@ -34,15 +34,15 @@ public class MapeoPago implements RowMapper<DtoPago>, MapperResult {
         String correo = resultSet.getString("correo");
         String direccionPropietario = resultSet.getString("direccion_propietario");
 
-        Long id_tarifa = resultSet.getLong("id_tarifa");
+        Long idTarifaPago = resultSet.getLong("id_tarifa");
         Long avaluoMinimo = resultSet.getLong("avaluo_minimo");
         Long avaluoMaximo = resultSet.getLong("avaluo_maximo");
-        double valor_tarifa = resultSet.getDouble("valor_tarifa");
-        int anio_tarifa = resultSet.getInt("anio_tarifa");
+        double valorTarifaPago = resultSet.getDouble("valor_tarifa");
+        int anioTarifaPago = resultSet.getInt("anio_tarifa");
 
         DtoPropietario dtoPropietario = new DtoPropietario(idPropietario, nombre, numeroIdentificacion, telefono, correo, direccionPropietario);
         DtoInmueble dtoInmueble = new DtoInmueble(idInmueble, numeroPredial, direccion, areaTotal, areaConstruida, avaluoCatrastral, dtoPropietario);
-        DtoTarifa dtoTarifa = new DtoTarifa(id_tarifa, avaluoMinimo, avaluoMaximo, valor_tarifa, anio_tarifa);
+        DtoTarifa dtoTarifa = new DtoTarifa(idTarifaPago, avaluoMinimo, avaluoMaximo, valorTarifaPago, anioTarifaPago);
 
         return new DtoPago(id, dtoPropietario, dtoInmueble, dtoTarifa, anio, valorPagado, fechaPago);
     }
