@@ -12,4 +12,11 @@ public interface DaoPago {
      * @return los pagos
      */
     List<DtoPago> listar();
+
+    /**
+     * Listar pagos pendientes por numero predial
+     * @param numeroPredial
+     * @return
+     */
+    List<DtoPago> listarPagosPendientesPorNumeroPredial(String numeroPredial);
 }
