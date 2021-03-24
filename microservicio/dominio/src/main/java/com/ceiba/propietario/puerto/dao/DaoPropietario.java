@@ -11,4 +11,11 @@ public interface DaoPropietario {
      * @return los propietarios
      */
     List<DtoPropietario> listar();
+
+    /**
+     * Permite lista un propietario
+     *
+     * @return un propietario
+     */
+    List<DtoPropietario> listarPorNumeroIdentificacion(String numeroIdentificacion);
 }
