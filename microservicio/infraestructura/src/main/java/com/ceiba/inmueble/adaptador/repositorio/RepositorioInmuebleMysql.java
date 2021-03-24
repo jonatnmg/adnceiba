@@ -20,28 +20,28 @@ public class RepositorioInmuebleMysql implements RepositorioInmueble {
     private static final String REGISTRO_NO_ENCONTRADO = "Registro no encontrado.";
 
     @SqlStatement(namespace = "inmueble", value = "crear")
-    private static String sqlCrear;
+    private static String sqlCrearInmueble;
 
     @SqlStatement(namespace = "inmueble", value = "actualizar")
-    private static String sqlActualizar;
+    private static String sqlActualizarInmueble;
 
     @SqlStatement(namespace = "inmueble", value = "eliminar")
-    private static String sqlEliminar;
+    private static String sqlEliminarInmueble;
 
     @SqlStatement(namespace = "inmueble", value = "existe")
-    private static String sqlExiste;
+    private static String sqlExisteInmueble;
 
     @SqlStatement(namespace = "inmueble", value = "existeExcluyendoId")
-    private static String sqlExisteExcluyendoId;
+    private static String sqlExisteInmuebleExcluyendoId;
 
     @SqlStatement(namespace = "inmueble", value = "buscarInmueblePorId")
     private static String sqlBuscarInmueblePorId;
 
     @SqlStatement(namespace = "inmueble", value = "existePorId")
-    private static String sqlExistePorId;
+    private static String sqlExisteInmueblePorId;
 
     @SqlStatement(namespace = "inmueble", value = "existePropietarioEnInmueble")
-    private static String sqlExistePropietarioEnInmueble;
+    private static String sqlExisteInmueblePropietarioEnInmueble;
 
     public RepositorioInmuebleMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
@@ -61,13 +61,13 @@ public class RepositorioInmuebleMysql implements RepositorioInmueble {
     @Override
     public Long crear(Inmueble inmueble) {
         SqlParameterSource paramSource = this.obtenerParametrosInmueble(inmueble);
-        return this.customNamedParameterJdbcTemplate.crear(paramSource, sqlCrear);
+        return this.customNamedParameterJdbcTemplate.crear(paramSource, sqlCrearInmueble);
     }
 
     @Override
     public void actualizar(Inmueble inmueble) {
         SqlParameterSource paramSource = this.obtenerParametrosInmueble(inmueble);
-        this.customNamedParameterJdbcTemplate.actualizar(paramSource, sqlActualizar);
+        this.customNamedParameterJdbcTemplate.actualizar(paramSource, sqlActualizarInmueble);
     }
 
     @Override
@@ -75,7 +75,7 @@ public class RepositorioInmuebleMysql implements RepositorioInmueble {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("id", id);
 
-        this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlEliminar, paramSource);
+        this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlEliminarInmueble, paramSource);
     }
 
     @Override
@@ -84,7 +84,7 @@ public class RepositorioInmuebleMysql implements RepositorioInmueble {
         paramSource.addValue("numeroPredial", numeroPredial);
         paramSource.addValue("direccion", direccion);
 
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExiste, paramSource, Boolean.class);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteInmueble, paramSource, Boolean.class);
     }
 
     @Override
@@ -94,7 +94,7 @@ public class RepositorioInmuebleMysql implements RepositorioInmueble {
         paramSource.addValue("numeroPredial", numeroPredial);
         paramSource.addValue("direccion", direccion);
 
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteExcluyendoId, paramSource, Boolean.class);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteInmuebleExcluyendoId, paramSource, Boolean.class);
     }
 
     @Override
@@ -115,7 +115,7 @@ public class RepositorioInmuebleMysql implements RepositorioInmueble {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("id", idInmueble);
 
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorId, paramSource, Boolean.class);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteInmueblePorId, paramSource, Boolean.class);
     }
 
     @Override
@@ -123,6 +123,6 @@ public class RepositorioInmuebleMysql implements RepositorioInmueble {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("idPropietario", idPropietario);
 
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePropietarioEnInmueble, paramSource, Boolean.class);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteInmueblePropietarioEnInmueble, paramSource, Boolean.class);
     }
 }

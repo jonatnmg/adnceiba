@@ -92,10 +92,10 @@ public class PagoImpuestoPredial {
         }
     }
 
-    private double obtenerValorApagar(LocalDate fechaPago, int anio_a_pagar, int valorImpuesto) {
+    private double obtenerValorApagar(LocalDate fechaPago, int anioApagar, int valorImpuesto) {
         double valorApagar = valorImpuesto;
 
-        if (ANIO_ACTUAL == anio_a_pagar) {
+        if (ANIO_ACTUAL == anioApagar) {
             LocalDate fechaMaximaParaDescuento = this.fechaMaximaDescuento();
             boolean aplicarDescuento = this.validarFechasParaDescuento(fechaPago, fechaMaximaParaDescuento);
 

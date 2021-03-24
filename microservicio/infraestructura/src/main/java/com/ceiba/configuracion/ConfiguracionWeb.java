@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @EnableWebMvc
 public class ConfiguracionWeb implements WebMvcConfigurer {
     @Value("${server.servlet.context-path}")
-    private String context_path;
+    private String contextPath;
 
     @Value("${server.allowedOrigins}")
     private String urlListaBlanca;
