@@ -10,7 +10,7 @@ public class ComandoPagoTestDataBuilder {
     private static final Long ID_INMUEBLE = 1L;
     private static final int ANIO = 2021;
     private static final long ID_TARIFA = 1L;
-    private static final Long VALOR_PAGADO = 782753l;
+    private static final Long VALOR_PAGADO = 782753L;
     private static final LocalDate FECHA_PAGO = LocalDate.of(2021, 5, 12);
 
     private Long id;

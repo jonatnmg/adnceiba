@@ -19,7 +19,7 @@ import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
 public class ConfiguracionJackson {
 
     public static final String FORMATO_LOCAL_DATE_TIME = "yyyy-MM-dd HH:mm:ss";
-    public static final String FORMATO_LOCAL_DATE = "d/MM/yyyy";
+    public static final String FORMATO_LOCAL_DATE = "yyyy-MM-d";
 
     @Bean
     public ObjectMapper objectMapper() {
