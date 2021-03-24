@@ -30,6 +30,11 @@ public class InmuebleTestDataBuilder {
         this.propietario = new PropietarioTestDataBuilder().build();
     }
 
+    public InmuebleTestDataBuilder conId(Long id) {
+        this.id = id;
+        return this;
+    }
+
     public InmuebleTestDataBuilder conNumeroPredial(Long numeroPredial) {
         this.numeroPredial = numeroPredial;
         return this;
