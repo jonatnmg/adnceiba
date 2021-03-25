@@ -1,9 +1,7 @@
 package com.ceiba.pago.consulta;
 
-import com.ceiba.inmueble.puerto.repositorio.RepositorioInmueble;
 import com.ceiba.pago.modelo.dto.DtoPago;
 import com.ceiba.pago.puerto.dao.DaoPago;
-import com.ceiba.pago.puerto.repositorio.RepositorioPagoImpuestoPredial;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

@@ -15,6 +15,7 @@ public interface DaoPago {
 
     /**
      * Listar pagos pendientes por numero predial
+     *
      * @param numeroPredial
      * @return
      */
