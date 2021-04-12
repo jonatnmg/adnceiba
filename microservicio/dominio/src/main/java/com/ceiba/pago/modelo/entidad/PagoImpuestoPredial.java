@@ -24,19 +24,17 @@ public class PagoImpuestoPredial {
     private static final String SE_DEBE_INGRESAR_UNA_FECHA_CON_EL_FORMATO = "Se debe ingresar una fecha con el formato %s";
 
     private static final String EL_ANIO_DEBE_TENER_UNA_LONGITUD_MAYOR_O_IGUAL_A = "El anio debe tener una longitud mayor o igual a %s";
-    private static final String NO_SE_PERMITEN_PAGOS_LOS_DIAS_SABADOS_O_DOMINGOS = "No se permiten pagos los dias sabados o domingos";
     private static final String ERROR_AL_PAGAR_EL_VALOR_A_PAGAR_ES = "Error al pagar, el valor que debe pagar es %s, estas pagando %s";
+    private static final String NO_SE_PERMITEN_PAGOS_LOS_DIAS_SABADOS_O_DOMINGOS = "No se permiten pagos los dias sabados o domingos";
 
-    private static final int LONGITUD_MINIMA_ANIO = 4;
-    private static final LocalDate FECHA_ACTUAL = LocalDate.now();
-    private static final int ANIO_ACTUAL = FECHA_ACTUAL.getYear();
-
-    private static final double PORCENTAJE_DESCUENTO = 0.1;
-    private static final double PORCENTAJE_COBRO_ADICIONAL = 0.1;
-    private static final int TARIFA_POR_MIL = 1000;
-
-    private static final int DIA_MAXIMO_DESCUENTO = 30;
-    private static final Month MES_MAXIMO_DESCUENTO = Month.APRIL;
+    private static final int ANIO_ACTUAL;
+    private static final int DIA_MAXIMO_DESCUENTO;
+    private static final LocalDate FECHA_ACTUAL;
+    private static final int LONGITUD_MINIMA_ANIO;
+    private static final Month MES_MAXIMO_DESCUENTO;
+    private static final double PORCENTAJE_DESCUENTO;
+    private static final double PORCENTAJE_COBRO_ADICIONAL;
+    private static final int TARIFA_POR_MIL;
 
     private Long id;
     private Propietario propietario;
@@ -45,6 +43,18 @@ public class PagoImpuestoPredial {
     private int anio;
     private Long valorPagado;
     private LocalDate fechaPago;
+
+    static {
+        FECHA_ACTUAL = LocalDate.now();
+        ANIO_ACTUAL = FECHA_ACTUAL.getYear();
+        MES_MAXIMO_DESCUENTO = Month.APRIL;
+        DIA_MAXIMO_DESCUENTO = 30;
+
+        PORCENTAJE_DESCUENTO = 0.1;
+        PORCENTAJE_COBRO_ADICIONAL = 0.1;
+        TARIFA_POR_MIL = 1000;
+        LONGITUD_MINIMA_ANIO = 4;
+    }
 
     public PagoImpuestoPredial(Long id, Propietario propietario, Inmueble inmueble, int anio, Long valorPagado, LocalDate fechaPago, Tarifa tarifa) {
 
@@ -95,18 +105,19 @@ public class PagoImpuestoPredial {
     private double obtenerValorApagar(LocalDate fechaPago, int anioApagar, int valorImpuesto) {
         double valorApagar = valorImpuesto;
 
-        if (ANIO_ACTUAL == anioApagar) {
-            LocalDate fechaMaximaParaDescuento = this.fechaMaximaDescuento();
-            boolean aplicarDescuento = this.validarFechasParaDescuento(fechaPago, fechaMaximaParaDescuento);
-
-            if (aplicarDescuento) {
-                double descuento = (valorImpuesto * PORCENTAJE_DESCUENTO);
-                valorApagar = valorImpuesto - descuento;
-            }
-
-        } else {
+        if (ANIO_ACTUAL != anioApagar) {
             double multa = (valorImpuesto * PORCENTAJE_COBRO_ADICIONAL);
             valorApagar = valorImpuesto + multa;
+
+            return valorApagar;
+        }
+
+        LocalDate fechaMaximaParaDescuento = this.fechaMaximaDescuento();
+        boolean aplicarDescuento = this.validarFechasParaDescuento(fechaPago, fechaMaximaParaDescuento);
+
+        if (aplicarDescuento) {
+            double descuento = (valorImpuesto * PORCENTAJE_DESCUENTO);
+            valorApagar = valorImpuesto - descuento;
         }
 
         return valorApagar;
